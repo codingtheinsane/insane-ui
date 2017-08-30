@@ -1,0 +1,30 @@
+{
+  "name": "insane-ui",
+  "version": "1.0.0",
+  "description": "Javascript Single Page Application with Bootstrap and JQuery UI libraries and a couple of Model-View-Controller sctructure page usage samples",
+  "main": "dist/insane_ui.js",
+  "author": "Coding the Insane (Pedro Almeida)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:codingtheinsane/insane-ui.git"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "grunt": "1.0.1",
+    "grunt-browserify": "5.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "gruntify-eslint": "3.1.0",
+    "jsdom": "9.12.0",
+    "mocha": "3.2.0",
+    "mocha-jsdom": "1.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "bootstrap-select": "1.12.4",
+    "datatables.net": "1.10.15",
+    "datatables.net-bs": "1.10.15",
+    "jquery": "1.12.4",
+    "underscore": "1.8.3"
+  }
+}

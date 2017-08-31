@@ -5,7 +5,7 @@ function createElementWithId(elementType, elementId) {
 }
 
 function createElementWithIdAndClassName(elementType, elementId, elementClassName) {
-    var element = createElementWithId(elementType, elementId)
+    var element = createElementWithId(elementType, elementId);
     element.className = elementClassName;
     return element;
 }

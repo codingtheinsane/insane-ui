@@ -1,22 +1,48 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
+var sinon = require('sinon');
 var MenuPanel = require('../../../../../app/page/view/panel/MenuPanel');
+var MenuHeaderFactory = require('../../../../../app/page/view/panel/utils/MenuHeaderFactory');
+var MenuContentFactory = require('../../../../../app/page/view/panel/utils/MenuContentFactory');
 
 describe('Menu Panel', function () {
 
     jsdom();
 
-    it('should create menu', function () {
-        var menu = MenuPanel.createMenu('ui-menu', 'Menu Title', {});
+    var sandbox;
 
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
+        sandbox.stub(MenuHeaderFactory, "createMenuHeader").callsFake(function () {
+            var element = document.createElement('div');
+            element.id = 'fake-header';
+            return element;
+        });
+        sandbox.stub(MenuContentFactory, "createMenuContent").callsFake(function () {
+            var element = document.createElement('div');
+            element.id = 'fake-content';
+            return element;
+        });
+    });
+
+    afterEach(function () {
+        sandbox.restore();
+    });
+
+    it('should create menu', function () {
+        var menu = MenuPanel.createMenu('ui-menu', 'Menu Title', 'Fake Menu Content');
+
+        sinon.assert.calledOnce(MenuHeaderFactory.createMenuHeader);
+        sinon.assert.calledWithExactly(MenuHeaderFactory.createMenuHeader, 'ui-menu', 'ui-menu-collapsible-content', 'Menu Title');
+
+        sinon.assert.calledOnce(MenuContentFactory.createMenuContent);
+        sinon.assert.calledWithExactly(MenuContentFactory.createMenuContent, 'ui-menu', 'ui-menu-collapsible-content', 'Fake Menu Content');
 
         expect(menu.outerHTML).to.equal(
             '<nav id="ui-menu" class="navbar navbar-default navbar-static-top">'
             + '<div id="ui-menu-container" class="container">'
-            + '<div id="ui-menu-header" class="navbar-header">'
-            + '<button id="ui-menu-header-collapsing-button" class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#ui-menu-collapsible-content" aria-expanded="false" aria-controls="navbar"><span id="ui-menu-header-navigation-toggle" class="sr-only">Toggle navigation</span><span id="ui-menu-header-navigation-toggle-first-icon-bar" class="icon-bar"></span><span id="ui-menu-header-navigation-toggle-second-icon-bar" class="icon-bar"></span><span id="ui-menu-header-navigation-toggle-third-icon-bar" class="icon-bar"></span></button>'
-            + '<a id="ui-menu-header-title" class="navbar-brand" href="?/">Menu Title</a></div>'
-            + '<div id="ui-menu-collapsible-content" class="navbar-collapse collapse">'
-            + '</div></div></nav>');
+            + '<div id="fake-header"></div>'
+            + '<div id="fake-content"></div>'
+            + '</div></nav>');
     });
 });

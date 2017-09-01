@@ -15,12 +15,12 @@ describe('Menu Panel', function () {
         sandbox = sinon.sandbox.create();
         sandbox.stub(MenuHeaderFactory, 'createMenuHeader').callsFake(function () {
             var element = document.createElement('div');
-            element.id = 'fake-header';
+            element.id = 'stubbed-menu-header';
             return element;
         });
         sandbox.stub(MenuContentFactory, 'createMenuContent').callsFake(function () {
             var element = document.createElement('div');
-            element.id = 'fake-content';
+            element.id = 'stubbed-menu-content';
             return element;
         });
     });
@@ -41,8 +41,8 @@ describe('Menu Panel', function () {
         expect(menu.outerHTML).to.equal(
             '<nav id="ui-menu" class="navbar navbar-default navbar-static-top">'
             + '<div id="ui-menu-container" class="container">'
-            + '<div id="fake-header"></div>'
-            + '<div id="fake-content"></div>'
+            + '<div id="stubbed-menu-header"></div>'
+            + '<div id="stubbed-menu-content"></div>'
             + '</div></nav>');
     });
 });

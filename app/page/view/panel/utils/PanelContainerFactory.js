@@ -11,7 +11,7 @@ function createPanelBody(panelId) {
 }
 
 function createPanelHeading(panelId, panelTitle) {
-    return ElementFactory.createElementWithIdClassNameAndTextNode('div', panelId + '-heading', 'panel-heading', panelTitle)
+    return ElementFactory.createElementWithIdClassNameAndTextNode('div', panelId + '-heading', 'panel-heading', panelTitle);
 }
 
 function createPanel(panelId, panelTitle) {

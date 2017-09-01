@@ -39,7 +39,7 @@ Open index.html
 Unit tests for all js files, both MVC and UI libraries
 
 ```
-./node_modules/mocha/bin/mocha test/unit/**/*.js
+./unit_tests.sh
 ```
 
 ### Coding style tests

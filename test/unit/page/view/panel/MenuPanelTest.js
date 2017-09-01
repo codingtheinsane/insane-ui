@@ -13,12 +13,12 @@ describe('Menu Panel', function () {
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
-        sandbox.stub(MenuHeaderFactory, "createMenuHeader").callsFake(function () {
+        sandbox.stub(MenuHeaderFactory, 'createMenuHeader').callsFake(function () {
             var element = document.createElement('div');
             element.id = 'fake-header';
             return element;
         });
-        sandbox.stub(MenuContentFactory, "createMenuContent").callsFake(function () {
+        sandbox.stub(MenuContentFactory, 'createMenuContent').callsFake(function () {
             var element = document.createElement('div');
             element.id = 'fake-content';
             return element;

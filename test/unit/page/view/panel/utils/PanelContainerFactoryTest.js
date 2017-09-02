@@ -7,16 +7,16 @@ describe('Panel Container Factory', function () {
     jsdom();
 
     it('should create a panel', function () {
-        var panel = PanelContainerFactory.createPanel('ui-panel', 'Panel Title');
+        var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         expect(panel.outerHTML).to.equal(
-            '<div id="ui-panel" class="panel panel-default">'
-            + '<div id="ui-panel-heading" class="panel-heading">Panel Title</div>'
-            + '<div id="ui-panel-body" class="panel-body">'
-            + '<div id="ui-panel-alert-top-container"></div>'
-            + '<div id="ui-panel-button-top-container"></div>'
-            + '<div id="ui-panel-body-content"></div>'
-            + '<div id="ui-panel-alert-bottom-container"></div>'
-            + '<div id="ui-panel-button-bottom-container"></div>'
+            '<div id="panel-id" class="panel panel-default">'
+            + '<div id="panel-id-heading" class="panel-heading">Panel Title</div>'
+            + '<div id="panel-id-body" class="panel-body">'
+            + '<div id="panel-id-alert-top-container" class="ui-alert-top-container"></div>'
+            + '<div id="panel-id-button-top-container" class="ui-button-top-container"></div>'
+            + '<div id="panel-id-body-content" class="ui-body-content-container"></div>'
+            + '<div id="panel-id-alert-bottom-container" class="ui-alert-bottom-container"></div>'
+            + '<div id="panel-id-button-bottom-container" class="ui-button-bottom-container"></div>'
             + '</div></div>');
     });
 });

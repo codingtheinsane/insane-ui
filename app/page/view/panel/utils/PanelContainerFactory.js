@@ -1,12 +1,18 @@
 var ElementFactory = require('./ElementFactory');
 
+var ALERT_BOTTOM_CONTAINER_CLASS_NAME = 'ui-alert-bottom-container';
+var ALERT_TOP_CONTAINER_CLASS_NAME = 'ui-alert-top-container';
+var BODY_CONTENT_CONTAINER_CLASS_NAME = 'ui-body-content-container';
+var BUTTON_BOTTOM_CONTAINER_CLASS_NAME = 'ui-button-bottom-container';
+var BUTTON_TOP_CONTAINER_CLASS_NAME = 'ui-button-top-container';
+
 function createPanelBody(panelId) {
     var panelBody = ElementFactory.createElementWithIdAndClassName('div', panelId + '-body', 'panel-body');
-    panelBody.appendChild(ElementFactory.createElementWithId('div', panelId + '-alert-top-container'));
-    panelBody.appendChild(ElementFactory.createElementWithId('div', panelId + '-button-top-container'));
-    panelBody.appendChild(ElementFactory.createElementWithId('div', panelId + '-body-content'));
-    panelBody.appendChild(ElementFactory.createElementWithId('div', panelId + '-alert-bottom-container'));
-    panelBody.appendChild(ElementFactory.createElementWithId('div', panelId + '-button-bottom-container'));
+    panelBody.appendChild(ElementFactory.createElementWithIdAndClassName('div', panelId + '-alert-top-container', ALERT_TOP_CONTAINER_CLASS_NAME));
+    panelBody.appendChild(ElementFactory.createElementWithIdAndClassName('div', panelId + '-button-top-container', BUTTON_TOP_CONTAINER_CLASS_NAME));
+    panelBody.appendChild(ElementFactory.createElementWithIdAndClassName('div', panelId + '-body-content', BODY_CONTENT_CONTAINER_CLASS_NAME));
+    panelBody.appendChild(ElementFactory.createElementWithIdAndClassName('div', panelId + '-alert-bottom-container', ALERT_BOTTOM_CONTAINER_CLASS_NAME));
+    panelBody.appendChild(ElementFactory.createElementWithIdAndClassName('div', panelId + '-button-bottom-container', BUTTON_BOTTOM_CONTAINER_CLASS_NAME));
     return panelBody;
 }
 

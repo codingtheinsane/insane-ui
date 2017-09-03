@@ -1,7 +1,7 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var ButtonFactory = require('../../../../../../app/page/view/panel/utils/ButtonFactory');
-var GlyphIconFactory = require('../../../../../../app/page/view/panel/utils/GlyphIconFactory');
+var ButtonFactory = require('../../../../../../../../app/page/view/ui/panel/utils/element/ButtonFactory');
+var GlyphIconFactory = require('../../../../../../../../app/page/view/ui/panel/utils/element/GlyphIconFactory');
 
 describe('Button Factory', function () {
 

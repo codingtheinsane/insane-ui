@@ -1,6 +1,6 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var InputFactory = require('../../../../../../app/page/view/panel/utils/InputFactory');
+var InputFactory = require('../../../../../../../app/page/view/ui/panel/utils/InputFactory');
 
 describe('Input Factory', function () {
 

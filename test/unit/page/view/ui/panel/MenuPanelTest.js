@@ -1,9 +1,9 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var MenuPanel = require('../../../../../app/page/view/panel/MenuPanel');
-var MenuHeaderFactory = require('../../../../../app/page/view/panel/utils/MenuHeaderFactory');
-var MenuContentFactory = require('../../../../../app/page/view/panel/utils/MenuContentFactory');
+var MenuPanel = require('../../../../../../app/page/view/ui/panel/MenuPanel');
+var MenuHeaderFactory = require('../../../../../../app/page/view/ui/panel/utils/MenuHeaderFactory');
+var MenuContentFactory = require('../../../../../../app/page/view/ui/panel/utils/MenuContentFactory');
 
 describe('Menu Panel', function () {
 

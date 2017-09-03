@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var ElementFactory = require('../../../../../../app/page/view/panel/utils/ElementFactory');
-var PanelContainerFactory = require('../../../../../../app/page/view/panel/utils/PanelContainerFactory');
-var PanelContainerUtilities = require('../../../../../../app/page/view/panel/utils/PanelContainerUtilities');
+var ElementFactory = require('../../../../../../../app/page/view/ui/panel/utils/element/ElementFactory');
+var PanelContainerFactory = require('../../../../../../../app/page/view/ui/panel/utils/PanelContainerFactory');
+var PanelContainerUtilities = require('../../../../../../../app/page/view/ui/panel/utils/PanelContainerUtilities');
 
 describe('Panel Container Utilities', function () {
 

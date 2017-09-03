@@ -1,4 +1,4 @@
-var ElementFactory = require('./ElementFactory');
+var ElementFactory = require('./element/ElementFactory');
 
 var ALERT_BOTTOM_CONTAINER_CLASS_NAME = 'ui-alert-bottom-container';
 var ALERT_TOP_CONTAINER_CLASS_NAME = 'ui-alert-top-container';

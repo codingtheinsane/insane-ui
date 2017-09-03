@@ -1,4 +1,4 @@
-var ElementFactory = require('./ElementFactory');
+var ElementFactory = require('./element/ElementFactory');
 
 function createInput(inputId, inputType, inputTypeId) {
     var input = ElementFactory.createElementWithIdAndClassName(

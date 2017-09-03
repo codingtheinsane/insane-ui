@@ -1,4 +1,4 @@
-var ElementFactory = require('./utils/ElementFactory');
+var ElementFactory = require('./utils/element/ElementFactory');
 var MenuContentFactory = require('./utils/MenuContentFactory');
 var MenuHeaderFactory = require('./utils/MenuHeaderFactory');
 

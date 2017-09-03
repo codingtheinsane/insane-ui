@@ -1,4 +1,4 @@
-var ElementFactory = require('./ElementFactory');
+var ElementFactory = require('./element/ElementFactory');
 
 function createHeaderWithMenuButtonThatAppearsWhenResizingWindowToSmallerWidth(menuId, menuNavBarId) {
     var button = ElementFactory.createElementWithIdAndClassName('button', menuId + '-header-collapsing-button', 'navbar-toggle collapsed');

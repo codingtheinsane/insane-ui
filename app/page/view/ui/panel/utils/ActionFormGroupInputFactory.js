@@ -1,4 +1,4 @@
-var ElementFactory = require('./ElementFactory');
+var ElementFactory = require('./element/ElementFactory');
 var InputFactory = require('./InputFactory');
 
 function createFormGroupWithLabel(inputId, inputLabel) {

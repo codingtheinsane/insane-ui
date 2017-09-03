@@ -1,4 +1,4 @@
-var ElementFactory = require('./ElementFactory');
+var ElementFactory = require('./element/ElementFactory');
 var MenuItemFactory = require('./MenuItemFactory');
 
 function createSubMenuItem(subMenuItemId, subMenuItemConfig) {

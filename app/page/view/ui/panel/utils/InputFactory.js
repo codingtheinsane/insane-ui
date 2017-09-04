@@ -19,7 +19,7 @@ function createInputSelection(inputId, inputTypeId, selectionValues) {
             )
         );
     }
-    if(selectionValues.length > 5) {
+    if (selectionValues.length > 5) {
         selection.setAttribute('data-live-search', 'true');
     }
     return selection;
@@ -45,6 +45,10 @@ function createIntegerInput(inputId) {
     return createInput(inputId, 'number', 'ui-form-input-integer');
 }
 
+function createPasswordInput(inputId) {
+    return createInput(inputId, 'password', 'ui-form-input-password');
+}
+
 function createTextInput(inputId) {
     return createInput(inputId, 'text', 'ui-form-input-text');
 }
@@ -65,6 +69,7 @@ module.exports = {
     createDateTimeInput: createDateTimeInput,
     createDecimalInput: createDecimalInput,
     createIntegerInput: createIntegerInput,
+    createPasswordInput: createPasswordInput,
     createTextInput: createTextInput,
     createSingleSelectionInput: createSingleSelectionInput,
     createMultipleSelectionInput: createMultipleSelectionInput

@@ -45,6 +45,13 @@ describe('Input Factory', function () {
         );
     });
 
+    it('should create password input', function () {
+        var input = InputFactory.createPasswordInput('password-input-id');
+        expect(input.outerHTML).to.equal(
+            '<input id="password-input-id" class="form-control ui-form-input ui-form-input-password" type="password">'
+        );
+    });
+
     it('should create text input', function () {
         var input = InputFactory.createTextInput('text-input-id');
         expect(input.outerHTML).to.equal(

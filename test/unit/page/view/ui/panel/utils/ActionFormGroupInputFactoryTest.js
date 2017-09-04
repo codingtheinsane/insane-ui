@@ -58,7 +58,7 @@ describe('Action Form Group Input Factory', function () {
     });
 
     it('should create boolean input form group', function () {
-        var inputFormGroup = ActionFormGroupInputFactory.createBooleanInputFormGroup('input-id', 'Input Label');
+        var inputFormGroup = ActionFormGroupInputFactory.createBooleanFormGroup('input-id', 'Input Label');
 
         sinon.assert.calledOnce(InputFactory.createBooleanInput);
         sinon.assert.calledWithExactly(InputFactory.createBooleanInput, 'input-id');
@@ -69,7 +69,7 @@ describe('Action Form Group Input Factory', function () {
     });
 
     it('should create date input form group', function () {
-        var inputFormGroup = ActionFormGroupInputFactory.createDateInputFormGroup('input-id', 'Input Label');
+        var inputFormGroup = ActionFormGroupInputFactory.createDateFormGroup('input-id', 'Input Label');
 
         sinon.assert.calledOnce(InputFactory.createDateInput);
         sinon.assert.calledWithExactly(InputFactory.createDateInput, 'input-id');

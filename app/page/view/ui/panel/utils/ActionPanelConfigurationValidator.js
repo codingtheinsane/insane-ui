@@ -17,6 +17,15 @@ function validateConfigurationItem(configurationItem) {
     if (!configurationItem.id) {
         return false;
     }
+    if (typeof configurationItem.id !== 'string') {
+        return false;
+    }
+    if (!configurationItem.label) {
+        return false;
+    }
+    if (typeof configurationItem.label !== 'string') {
+        return false;
+    }
     if (!configurationItem.type) {
         return false;
     }
@@ -61,6 +70,9 @@ function removeInvalidConfiguration(configuration) {
 }
 
 function validateConfiguration(configuration) {
+    if (!configuration || !Array.isArray(configuration) || configuration.length === 0) {
+        return false;
+    }
     var result = true;
     _.each(configuration, function (configurationItem) {
         if (validateConfigurationItem(configurationItem) === false) {

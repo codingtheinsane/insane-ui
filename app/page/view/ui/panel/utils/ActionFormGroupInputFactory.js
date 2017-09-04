@@ -25,12 +25,12 @@ function createFormGroup(inputId, inputLabel, input) {
     return formGroup;
 }
 
-function createBooleanInputFormGroup(inputId, inputLabel) {
+function createBooleanFormGroup(inputId, inputLabel) {
     var input = InputFactory.createBooleanInput(inputId);
     return createFormGroup(inputId, inputLabel, input);
 }
 
-function createDateInputFormGroup(inputId, inputLabel) {
+function createDateFormGroup(inputId, inputLabel) {
     var input = InputFactory.createDateInput(inputId);
     return createFormGroup(inputId, inputLabel, input);
 }
@@ -66,8 +66,8 @@ function createMultipleSelectionFormGroup(inputId, inputLabel, selectionValues) 
 }
 
 module.exports = {
-    createBooleanInputFormGroup: createBooleanInputFormGroup,
-    createDateInputFormGroup: createDateInputFormGroup,
+    createBooleanFormGroup: createBooleanFormGroup,
+    createDateFormGroup: createDateFormGroup,
     createDateTimeFormGroup: createDateTimeFormGroup,
     createDecimalFormGroup: createDecimalFormGroup,
     createIntegerFormGroup: createIntegerFormGroup,

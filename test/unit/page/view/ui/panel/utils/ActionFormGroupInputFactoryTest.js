@@ -45,6 +45,9 @@ describe('Action Form Group Input Factory', function () {
         sandbox.stub(InputFactory, 'createTextInput').callsFake(function () {
             return createStubbedInputFactoryResponseWithId('stubbed-text-input');
         });
+        sandbox.stub(InputFactory, 'createPasswordInput').callsFake(function () {
+            return createStubbedInputFactoryResponseWithId('stubbed-password-input');
+        });
         sandbox.stub(InputFactory, 'createSingleSelectionInput').callsFake(function () {
             return createStubbedInputFactoryResponseWithId('stubbed-single-selection-input');
         });
@@ -80,7 +83,7 @@ describe('Action Form Group Input Factory', function () {
     });
 
     it('should create date time input form group', function () {
-        var inputFormGroup = ActionFormGroupInputFactory.createDateTimeFormGroup('input-id', 'Input Label');
+        var inputFormGroup = ActionFormGroupInputFactory.createDatetimeFormGroup('input-id', 'Input Label');
 
         sinon.assert.calledOnce(InputFactory.createDateTimeInput);
         sinon.assert.calledWithExactly(InputFactory.createDateTimeInput, 'input-id');
@@ -120,6 +123,17 @@ describe('Action Form Group Input Factory', function () {
 
         expect(inputFormGroup.outerHTML).to.equal(createExpectedFormGroupOutterHtmlForInput(
             '<div id="stubbed-text-input"></div>'
+        ));
+    });
+
+    it('should create password input form group', function () {
+        var inputFormGroup = ActionFormGroupInputFactory.createPasswordFormGroup('input-id', 'Input Label');
+
+        sinon.assert.calledOnce(InputFactory.createPasswordInput);
+        sinon.assert.calledWithExactly(InputFactory.createPasswordInput, 'input-id');
+
+        expect(inputFormGroup.outerHTML).to.equal(createExpectedFormGroupOutterHtmlForInput(
+            '<div id="stubbed-password-input"></div>'
         ));
     });
 

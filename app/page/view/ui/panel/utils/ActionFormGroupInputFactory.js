@@ -55,6 +55,11 @@ function createTextFormGroup(inputId, inputLabel) {
     return createFormGroup(inputId, inputLabel, input);
 }
 
+function createPasswordFormGroup(inputId, inputLabel) {
+    var input = InputFactory.createPasswordInput(inputId);
+    return createFormGroup(inputId, inputLabel, input);
+}
+
 function createSingleSelectionFormGroup(inputId, inputLabel, selectionValues) {
     var input = InputFactory.createSingleSelectionInput(inputId, selectionValues);
     return createFormGroup(inputId, inputLabel, input);
@@ -68,10 +73,11 @@ function createMultipleSelectionFormGroup(inputId, inputLabel, selectionValues) 
 module.exports = {
     createBooleanFormGroup: createBooleanFormGroup,
     createDateFormGroup: createDateFormGroup,
-    createDateTimeFormGroup: createDateTimeFormGroup,
+    createDatetimeFormGroup: createDateTimeFormGroup,
     createDecimalFormGroup: createDecimalFormGroup,
     createIntegerFormGroup: createIntegerFormGroup,
     createTextFormGroup: createTextFormGroup,
+    createPasswordFormGroup: createPasswordFormGroup,
     createSingleSelectionFormGroup: createSingleSelectionFormGroup,
     createMultipleSelectionFormGroup: createMultipleSelectionFormGroup
 };

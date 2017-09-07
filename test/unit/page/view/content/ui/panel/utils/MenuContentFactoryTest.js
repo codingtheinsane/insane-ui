@@ -1,6 +1,6 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var MenuContentFactory = require('../../../../../../../app/page/view/ui/panel/utils/MenuContentFactory');
+var MenuContentFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/MenuContentFactory');
 
 describe('Menu Content Factory', function () {
 

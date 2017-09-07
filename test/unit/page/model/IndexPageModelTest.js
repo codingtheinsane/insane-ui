@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var IndexPageModel = require('../../../../app/page/model/IndexPageModel');
-var UI = require('../../../../app/page/view/ui/UI');
+var UI = require('../../../../app/page/view/content/ui/UI');
 
 describe('Index Page Model', function () {
 

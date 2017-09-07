@@ -1,6 +1,6 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var ActionPanelConfigurationValidator = require('../../../../../../../app/page/view/ui/panel/utils/ActionPanelConfigurationValidator');
+var ActionPanelConfigurationValidator = require('../../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelConfigurationValidator');
 
 describe('Action Panel Configuration Validator', function () {
 

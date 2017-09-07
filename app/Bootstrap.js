@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var MenuConfiguration = require('./config/MenuConfiguration');
-var MenuPanel = require('./page/view/ui/panel/MenuPanel');
+var MenuPanel = require('./page/view/content/ui/panel/MenuPanel');
 var Router = require('./Router');
 
 function setupBootstrapOnDocumentLoading() {

@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
-var UI = require('../../../../../app/page/view/ui/UI');
-var ActionPanel = require('../../../../../app/page/view/ui/panel/ActionPanel');
-var PanelContainerUtilities = require('../../../../../app/page/view/ui/panel/utils/PanelContainerUtilities');
-var AlertFactory = require('../../../../../app/page/view/ui/panel/utils/element/AlertFactory');
-var ButtonFactory = require('../../../../../app/page/view/ui/panel/utils/element/ButtonFactory');
-var GlyphIconFactory = require('../../../../../app/page/view/ui/panel/utils/element/GlyphIconFactory');
+var UI = require('../../../../../../app/page/view/content/ui/UI');
+var ActionPanel = require('../../../../../../app/page/view/content/ui/panel/ActionPanel');
+var PanelContainerUtilities = require('../../../../../../app/page/view/content/ui/panel/utils/PanelContainerUtilities');
+var AlertFactory = require('../../../../../../app/page/view/content/ui/panel/utils/element/AlertFactory');
+var ButtonFactory = require('../../../../../../app/page/view/content/ui/panel/utils/element/ButtonFactory');
+var GlyphIconFactory = require('../../../../../../app/page/view/content/ui/panel/utils/element/GlyphIconFactory');
 
 describe('UI', function () {
 

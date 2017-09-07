@@ -1,6 +1,6 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var AlertFactory = require('../../../../../../../../app/page/view/ui/panel/utils/element/AlertFactory');
+var AlertFactory = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/AlertFactory');
 
 describe('Alert Factory', function () {
 

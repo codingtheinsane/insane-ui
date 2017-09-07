@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var InputFactory = require('../../../../../../../app/page/view/ui/panel/utils/InputFactory');
-var ActionFormGroupInputFactory = require('../../../../../../../app/page/view/ui/panel/utils/ActionFormGroupInputFactory');
+var InputFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/InputFactory');
+var ActionFormGroupInputFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/ActionFormGroupInputFactory');
 
 describe('Action Form Group Input Factory', function () {
 

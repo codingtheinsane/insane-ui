@@ -1,10 +1,14 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
+var sinon = require('sinon');
 var AlertFactory = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/AlertFactory');
+var ElementDestructor = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/ElementDestructor');
 
 describe('Alert Factory', function () {
 
     jsdom();
+
+    var sandbox;
 
     function createExpectedAlert(alertClassName, glyphIconClassName) {
         return '<div id="alert-id" class="alert ' + alertClassName + ' alert-dismissable">'
@@ -13,28 +17,51 @@ describe('Alert Factory', function () {
             + '</div>';
     }
 
-    it('should create success Alert', function () {
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
+    });
+
+    afterEach(function () {
+        sandbox.restore();
+    });
+
+    it('should create success Alert and destruct it on timeout', function (done) {
         var EXPECTED_ALERT = createExpectedAlert('alert-success', 'glyphicon-ok-sign');
-        var alert = AlertFactory.createSuccessAlert('alert-id', 'Alert Text');
-        expect(alert.outerHTML).to.equal(EXPECTED_ALERT);
+        sandbox.stub(ElementDestructor, 'destructElement').callsFake(function (alertToBeDestructed) {
+            expect(alertToBeDestructed.outerHTML).to.equal(EXPECTED_ALERT);
+            done();
+        });
+
+        AlertFactory.createSuccessAlert('alert-id', 'Alert Text', 0.005);
     });
 
-    it('should create info Alert', function () {
+    it('should create info Alert and destruct it on timeout', function () {
         var EXPECTED_ALERT = createExpectedAlert('alert-info', 'glyphicon-info-sign');
-        var alert = AlertFactory.createInfoAlert('alert-id', 'Alert Text');
-        expect(alert.outerHTML).to.equal(EXPECTED_ALERT);
+        sandbox.stub(ElementDestructor, 'destructElement').callsFake(function (alertToBeDestructed) {
+            expect(alertToBeDestructed.outerHTML).to.equal(EXPECTED_ALERT);
+            done();
+        });
 
+        AlertFactory.createInfoAlert('alert-id', 'Alert Text', 0.005);
     });
 
-    it('should create warning Alert', function () {
+    it('should create warning Alert and destruct it on timeout', function () {
         var EXPECTED_ALERT = createExpectedAlert('alert-warning', 'glyphicon-exclamation-sign');
-        var alert = AlertFactory.createWarningAlert('alert-id', 'Alert Text');
-        expect(alert.outerHTML).to.equal(EXPECTED_ALERT);
+        sandbox.stub(ElementDestructor, 'destructElement').callsFake(function (alertToBeDestructed) {
+            expect(alertToBeDestructed.outerHTML).to.equal(EXPECTED_ALERT);
+            done();
+        });
+
+        AlertFactory.createWarningAlert('alert-id', 'Alert Text', 0.005);
     });
 
-    it('should create danger Alert', function () {
+    it('should create danger Alert and destruct it on timeout', function () {
         var EXPECTED_ALERT = createExpectedAlert('alert-danger', 'glyphicon-exclamation-sign');
-        var alert = AlertFactory.createDangerAlert('alert-id', 'Alert Text');
-        expect(alert.outerHTML).to.equal(EXPECTED_ALERT);
+        sandbox.stub(ElementDestructor, 'destructElement').callsFake(function (alertToBeDestructed) {
+            expect(alertToBeDestructed.outerHTML).to.equal(EXPECTED_ALERT);
+            done();
+        });
+
+        AlertFactory.createDangerAlert('alert-id', 'Alert Text', 0.005);
     });
 });

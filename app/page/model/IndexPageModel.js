@@ -6,7 +6,7 @@ function getLogInActionPanelConfiguration() {
     }, {
         'label': 'Password',
         'type': 'password',
-        'id': 'page-index-login-username'
+        'id': 'page-index-login-password'
     }];
 }
 

@@ -1,8 +1,10 @@
 var ElementFactory = require('./ElementFactory');
+var ElementDestructor = require('./ElementDestructor');
 var GlyphIconFactory = require('./GlyphIconFactory');
+var TimeKeeper = require('./TimeKeeper');
 
-function createCloseButton(alertId) {
-    var closeButton = ElementFactory.createElementWithIdClassNameAndTextNode('a', alertId + '-close-button', 'close ui-alert-close-button','×');
+function createAlertCloseButton(alertId) {
+    var closeButton = ElementFactory.createElementWithIdClassNameAndTextNode('a', alertId + '-close-button', 'close ui-alert-close-button', '×');
     closeButton.href = '#';
     closeButton.setAttribute('data-dismiss', 'alert');
     closeButton.setAttribute('aria-label', 'close');
@@ -12,26 +14,42 @@ function createCloseButton(alertId) {
 function createAlertWithGlyphIcon(alertId, glyphIcon, alertText, className) {
     var alert = ElementFactory.createElementWithIdAndClassName('div', alertId, className);
     alert.appendChild(glyphIcon);
-    alert.appendChild(createCloseButton(alertId));
+    alert.appendChild(createAlertCloseButton(alertId));
     alert.appendChild(document.createTextNode(' '));
     alert.appendChild(ElementFactory.createElementWithIdAndTextNode('strong', alertId + '-text', alertText));
     return alert;
 }
 
-function createSuccessAlert(alertId, alertText) {
-    return createAlertWithGlyphIcon(alertId, GlyphIconFactory.OK_SIGN(), alertText, 'alert alert-success alert-dismissable');
+function createSuccessAlert(alertId, alertText, alertTimeoutInSeconds) {
+    var alert = createAlertWithGlyphIcon(alertId, GlyphIconFactory.OK_SIGN(), alertText, 'alert alert-success alert-dismissable');
+    TimeKeeper.timeOut(function () {
+        ElementDestructor.destructElement(alert);
+    }, alertTimeoutInSeconds);
+    return alert;
 }
 
-function createInfoAlert(alertId, alertText) {
-    return createAlertWithGlyphIcon(alertId, GlyphIconFactory.INFO_SIGN(), alertText, 'alert alert-info alert-dismissable');
+function createInfoAlert(alertId, alertText, alertTimeoutInSeconds) {
+    var alert = createAlertWithGlyphIcon(alertId, GlyphIconFactory.INFO_SIGN(), alertText, 'alert alert-info alert-dismissable');
+    TimeKeeper.timeOut(function () {
+        ElementDestructor.destructElement(alert);
+    }, alertTimeoutInSeconds);
+    return alert;
 }
 
-function createWarningAlert(alertId, alertText) {
-    return createAlertWithGlyphIcon(alertId, GlyphIconFactory.EXCLAMATION_SIGN(), alertText, 'alert alert-warning alert-dismissable');
+function createWarningAlert(alertId, alertText, alertTimeoutInSeconds) {
+    var alert = createAlertWithGlyphIcon(alertId, GlyphIconFactory.EXCLAMATION_SIGN(), alertText, 'alert alert-warning alert-dismissable');
+    TimeKeeper.timeOut(function () {
+        ElementDestructor.destructElement(alert);
+    }, alertTimeoutInSeconds);
+    return alert;
 }
 
-function createDangerAlert(alertId, alertText) {
-    return createAlertWithGlyphIcon(alertId, GlyphIconFactory.EXCLAMATION_SIGN(), alertText, 'alert alert-danger alert-dismissable');
+function createDangerAlert(alertId, alertText, alertTimeoutInSeconds) {
+    var alert = createAlertWithGlyphIcon(alertId, GlyphIconFactory.EXCLAMATION_SIGN(), alertText, 'alert alert-danger alert-dismissable');
+    TimeKeeper.timeOut(function () {
+        ElementDestructor.destructElement(alert);
+    }, alertTimeoutInSeconds);
+    return alert;
 }
 
 module.exports = {

@@ -1,4 +1,5 @@
 var ElementFactory = require('./element/ElementFactory');
+var SelectPicker = require('./external/SelectPicker');
 
 function createInput(inputId, inputType, inputTypeId) {
     var input = ElementFactory.createElementWithIdAndClassName(
@@ -22,6 +23,7 @@ function createInputSelection(inputId, inputTypeId, selectionValues) {
     if (selectionValues.length > 5) {
         selection.setAttribute('data-live-search', 'true');
     }
+    SelectPicker.createSelectPickerAfterTimeout(selection);
     return selection;
 }
 

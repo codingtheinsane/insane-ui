@@ -1,10 +1,23 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
+var sinon = require('sinon');
 var InputFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/InputFactory');
+var SelectPicker = require('../../../../../../../../app/page/view/content/ui/panel/utils/external/SelectPicker');
 
 describe('Input Factory', function () {
 
     jsdom();
+
+    var sandbox;
+
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
+        sandbox.stub(SelectPicker, 'createSelectPickerAfterTimeout');
+    });
+
+    afterEach(function () {
+        sandbox.restore();
+    });
 
     it('should create boolean input', function () {
         var input = InputFactory.createBooleanInput('boolean-input-id');

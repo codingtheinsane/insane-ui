@@ -79,8 +79,9 @@ describe('Input Factory', function () {
         ]);
         expect(input.outerHTML).to.equal(
             '<select id="single-selection-input-id" class="selectpicker form-control ui-form-input ui-form-input-single-selection">'
-            + '<option id="single-selection-input-id-option-0">First Option</option>'
-            + '<option id="single-selection-input-id-option-1">Second Option</option>'
+            + '<option id="single-selection-input-id-option-0"></option>'
+            + '<option id="single-selection-input-id-option-1">First Option</option>'
+            + '<option id="single-selection-input-id-option-2">Second Option</option>'
             + '</select>'
         );
     });
@@ -96,12 +97,13 @@ describe('Input Factory', function () {
         ]);
         expect(input.outerHTML).to.equal(
             '<select id="single-selection-input-id" class="selectpicker form-control ui-form-input ui-form-input-single-selection" data-live-search="true">'
-            + '<option id="single-selection-input-id-option-0">First Option</option>'
-            + '<option id="single-selection-input-id-option-1">Second Option</option>'
-            + '<option id="single-selection-input-id-option-2">Third Option</option>'
-            + '<option id="single-selection-input-id-option-3">Fourth Option</option>'
-            + '<option id="single-selection-input-id-option-4">Fifth Option</option>'
-            + '<option id="single-selection-input-id-option-5">Sixth Option</option>'
+            + '<option id="single-selection-input-id-option-0"></option>'
+            + '<option id="single-selection-input-id-option-1">First Option</option>'
+            + '<option id="single-selection-input-id-option-2">Second Option</option>'
+            + '<option id="single-selection-input-id-option-3">Third Option</option>'
+            + '<option id="single-selection-input-id-option-4">Fourth Option</option>'
+            + '<option id="single-selection-input-id-option-5">Fifth Option</option>'
+            + '<option id="single-selection-input-id-option-6">Sixth Option</option>'
             + '</select>'
         );
     });
@@ -113,8 +115,9 @@ describe('Input Factory', function () {
         ]);
         expect(input.outerHTML).to.equal(
             '<select id="multiple-selection-input-id" class="selectpicker form-control ui-form-input ui-form-input-multiple-selection" multiple="true">'
-            + '<option id="multiple-selection-input-id-option-0">First Option</option>'
-            + '<option id="multiple-selection-input-id-option-1">Second Option</option>'
+            + '<option id="multiple-selection-input-id-option-0"></option>'
+            + '<option id="multiple-selection-input-id-option-1">First Option</option>'
+            + '<option id="multiple-selection-input-id-option-2">Second Option</option>'
             + '</select>'
         );
     });
@@ -130,12 +133,13 @@ describe('Input Factory', function () {
         ]);
         expect(input.outerHTML).to.equal(
             '<select id="multiple-selection-input-id" class="selectpicker form-control ui-form-input ui-form-input-multiple-selection" data-live-search="true" multiple="true">'
-            + '<option id="multiple-selection-input-id-option-0">First Option</option>'
-            + '<option id="multiple-selection-input-id-option-1">Second Option</option>'
-            + '<option id="multiple-selection-input-id-option-2">Third Option</option>'
-            + '<option id="multiple-selection-input-id-option-3">Fourth Option</option>'
-            + '<option id="multiple-selection-input-id-option-4">Fifth Option</option>'
-            + '<option id="multiple-selection-input-id-option-5">Sixth Option</option>'
+            + '<option id="multiple-selection-input-id-option-0"></option>'
+            + '<option id="multiple-selection-input-id-option-1">First Option</option>'
+            + '<option id="multiple-selection-input-id-option-2">Second Option</option>'
+            + '<option id="multiple-selection-input-id-option-3">Third Option</option>'
+            + '<option id="multiple-selection-input-id-option-4">Fourth Option</option>'
+            + '<option id="multiple-selection-input-id-option-5">Fifth Option</option>'
+            + '<option id="multiple-selection-input-id-option-6">Sixth Option</option>'
             + '</select>'
         );
     });

@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var ElementFactory = require('./element/ElementFactory');
 var SelectPicker = require('./external/SelectPicker');
 
@@ -10,6 +11,7 @@ function createInput(inputId, inputType, inputTypeId) {
 }
 
 function createInputSelection(inputId, inputTypeId, selectionValues) {
+    selectionValues.unshift('');
     var selection = ElementFactory.createElementWithIdAndClassName(
         'select', inputId, 'selectpicker form-control ui-form-input ' + inputTypeId
     );
@@ -28,7 +30,7 @@ function createInputSelection(inputId, inputTypeId, selectionValues) {
 }
 
 function createBooleanInput(inputId) {
-    return createInputSelection(inputId, 'ui-form-input-boolean', ['', 'True', 'False']);
+    return createInputSelection(inputId, 'ui-form-input-boolean', ['True', 'False']);
 }
 
 function createDateInput(inputId) {

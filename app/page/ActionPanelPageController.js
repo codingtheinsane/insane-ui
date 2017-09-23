@@ -1,8 +1,8 @@
-var IndexPageView = require('./view/IndexPageView');
-var IndexPageModel = require('./model/IndexPageModel');
+var ActionPanelPageView = require('./view/ActionPanelPageView');
+var ActionPanelPageModel = require('./model/ActionPanelPageModel');
 
 function run(container) {
-    IndexPageView.display(container, IndexPageModel);
+    ActionPanelPageView.display(container, ActionPanelPageModel);
 }
 
 module.exports = {

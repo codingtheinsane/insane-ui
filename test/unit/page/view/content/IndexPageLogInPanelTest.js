@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var IndexPageLogInPanel = require('../../../../../app/page/view/content/IndexPageLogInPanel');
 var UI = require('../../../../../app/page/view/content/ui/UI');
 
-describe('Index Page View', function () {
+describe('Index Page Log In Panel', function () {
 
     jsdom();
 
@@ -28,7 +28,6 @@ describe('Index Page View', function () {
         sandbox.stub(UI.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
             expect(id).to.equal('page-index-login-panel');
             expect(title).to.equal('Login Panel');
-            expect(id).to.equal('page-index-login-panel');
             expect(config).to.equal('Stubbed Log In Action Panel Configuration');
             return 'Stubbed Log In Panel';
         });

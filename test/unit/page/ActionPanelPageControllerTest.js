@@ -2,8 +2,8 @@ var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var ActionPanelPageController = require('../../../app/page/ActionPanelPageController');
-var IndexPageView = require('../../../app/page/view/IndexPageView');
-var IndexPageModel = require('../../../app/page/model/IndexPageModel');
+var ActionPanelPageView = require('../../../app/page/view/ActionPanelPageView');
+var ActionPanelPageModel = require('../../../app/page/model/ActionPanelPageModel');
 
 describe('Action Panel Page Controller', function () {
 
@@ -20,9 +20,9 @@ describe('Action Panel Page Controller', function () {
     });
 
     it('should display Index Page View with container and Index Page Model', function (done) {
-        sandbox.stub(IndexPageView, 'display').callsFake(function (container, model) {
+        sandbox.stub(ActionPanelPageView, 'display').callsFake(function (container, model) {
             expect(container).to.equal('Stubbed container');
-            expect(model).to.equal(IndexPageModel);
+            expect(model).to.equal(ActionPanelPageModel);
             done();
         });
 

@@ -23,7 +23,7 @@ npm install
 Build UI
 
 ```
-grunt build
+./node_modules/grunt/bin/grunt build
 ```
 
 Open sample UI on the browser
@@ -47,7 +47,7 @@ Unit tests for all js files, both MVC and UI libraries
 ESLint tests run with Grunt command
 
 ```
-grunt eslint
+./node_modules/grunt/bin/grunt eslint
 ```
 
 ## Contributing

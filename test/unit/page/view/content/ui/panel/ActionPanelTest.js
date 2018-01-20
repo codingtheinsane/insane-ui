@@ -3,6 +3,7 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 var ActionPanel = require('../../../../../../../app/page/view/content/ui/panel/ActionPanel');
 var ActionPanelConfigurationValidator = require('../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelConfigurationValidator');
+var ActionPanelDataRetriever = require('../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelDataRetriever');
 var ActionPanelFactory = require('../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelFactory');
 
 describe('Action Panel', function () {
@@ -36,5 +37,13 @@ describe('Action Panel', function () {
             return 'Stubbed Verification Result';
         });
         expect(ActionPanel.validateActionPanelConfiguration('Stubbed Panel Configuration')).to.equal('Stubbed Verification Result');
+    });
+
+    it('should retrieve data from action panel', function () {
+        sandbox.stub(ActionPanelDataRetriever, 'retrieveActionPanelData').callsFake(function (container) {
+            expect(container).to.equal('container');
+            return 'Stubbed Data';
+        });
+        expect(ActionPanel.retrieveActionPanelData('container')).to.equal('Stubbed Data');
     });
 });

@@ -30,39 +30,39 @@ function createInputSelection(inputId, inputTypeId, selectionValues) {
 }
 
 function createBooleanInput(inputId) {
-    return createInputSelection(inputId, 'ui-form-input-boolean', ['True', 'False']);
+    return createInputSelection(inputId, 'ui-form-input-type-boolean', ['True', 'False']);
 }
 
 function createDateInput(inputId) {
-    return createInput(inputId, 'date', 'ui-form-input-date');
+    return createInput(inputId, 'date', 'ui-form-input-type-date');
 }
 
 function createDateTimeInput(inputId) {
-    return createInput(inputId, 'datetime-local', 'ui-form-input-date-time');
+    return createInput(inputId, 'datetime-local', 'ui-form-input-type-date-time');
 }
 
 function createDecimalInput(inputId) {
-    return createInput(inputId, 'number', 'ui-form-input-decimal');
+    return createInput(inputId, 'number', 'ui-form-input-type-decimal');
 }
 
 function createIntegerInput(inputId) {
-    return createInput(inputId, 'number', 'ui-form-input-integer');
+    return createInput(inputId, 'number', 'ui-form-input-type-integer');
 }
 
 function createPasswordInput(inputId) {
-    return createInput(inputId, 'password', 'ui-form-input-password');
+    return createInput(inputId, 'password', 'ui-form-input-type-password');
 }
 
 function createTextInput(inputId) {
-    return createInput(inputId, 'text', 'ui-form-input-text');
+    return createInput(inputId, 'text', 'ui-form-input-type-text');
 }
 
 function createSingleSelectionInput(inputId, selectionValues) {
-    return createInputSelection(inputId, 'ui-form-input-single-selection', selectionValues);
+    return createInputSelection(inputId, 'ui-form-input-type-single-selection', selectionValues);
 }
 
 function createMultipleSelectionInput(inputId, selectionValues) {
-    var inputSelection = createInputSelection(inputId, 'ui-form-input-multiple-selection', selectionValues);
+    var inputSelection = createInputSelection(inputId, 'ui-form-input-type-multiple-selection', selectionValues);
     inputSelection.setAttribute('multiple', 'true');
     return inputSelection;
 }

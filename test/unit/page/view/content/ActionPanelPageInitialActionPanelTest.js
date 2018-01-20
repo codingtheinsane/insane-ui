@@ -12,13 +12,7 @@ describe('Action Panel Page Initial Action Panel', function () {
 
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
-    });
 
-    afterEach(function () {
-        sandbox.restore();
-    });
-
-    it('should create initial panel with initial action panel configuration and append it to container', function () {
         sandbox.stub(UI.panel.Utilities);
 
         sandbox.stub(UI.element.GlyphIcon, 'USER').callsFake(function () {
@@ -31,7 +25,13 @@ describe('Action Panel Page Initial Action Panel', function () {
             expect(config).to.equal('Stubbed Initial Action Panel Configuration');
             return 'Stubbed Initial Panel';
         });
+    });
 
+    afterEach(function () {
+        sandbox.restore();
+    });
+
+    it('should create initial panel with initial action panel configuration and append it to container', function () {
         sandbox.stub(UI.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText) {
             expect(id).to.equal('page-action-initial-button');
             expect(glyphIcon).to.equal('User Glyph Icon');
@@ -40,5 +40,26 @@ describe('Action Panel Page Initial Action Panel', function () {
         });
 
         expect(ActionPanelPageInitialActionPanel.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+    });
+
+    it('should bind callback to submit button when creating panel', function (done) {
+        var buttonCallback = function () {
+        };
+
+        sandbox.stub(UI.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText, callback) {
+            expect(id).to.equal('page-action-initial-button');
+            expect(glyphIcon).to.equal('User Glyph Icon');
+            expect(buttonText).to.equal('Submit');
+            buttonCallback = callback();
+            return 'Stubbed Initial Button';
+        });
+
+        sandbox.stub(UI.panel.ActionPanel, 'retrieveActionPanelData').callsFake(function (container) {
+            expect(container).to.equal('Stubbed Initial Panel');
+            done();
+        });
+
+        expect(ActionPanelPageInitialActionPanel.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+        buttonCallback();
     });
 });

@@ -41,7 +41,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with boolean form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createBooleanFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('boolean-id');
+            expect(id).to.equal('panel-id-boolean-id');
             expect(label).to.equal('Boolean Label');
             return createStubbedFormGroup('stubbed-boolean-form-group');
         });
@@ -59,7 +59,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with date form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createDateFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('date-id');
+            expect(id).to.equal('panel-id-date-id');
             expect(label).to.equal('Date Label');
             return createStubbedFormGroup('stubbed-date-form-group');
         });
@@ -77,7 +77,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with datetime form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createDatetimeFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('datetime-id');
+            expect(id).to.equal('panel-id-datetime-id');
             expect(label).to.equal('Datetime Label');
             return createStubbedFormGroup('stubbed-datetime-form-group');
         });
@@ -95,7 +95,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with decimal form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createDecimalFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('decimal-id');
+            expect(id).to.equal('panel-id-decimal-id');
             expect(label).to.equal('Decimal Label');
             return createStubbedFormGroup('stubbed-decimal-form-group');
         });
@@ -113,7 +113,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with integer form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createIntegerFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('integer-id');
+            expect(id).to.equal('panel-id-integer-id');
             expect(label).to.equal('Integer Label');
             return createStubbedFormGroup('stubbed-integer-form-group');
         });
@@ -131,7 +131,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with text form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createTextFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('text-id');
+            expect(id).to.equal('panel-id-text-id');
             expect(label).to.equal('Text Label');
             return createStubbedFormGroup('stubbed-text-form-group');
         });
@@ -149,7 +149,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with password form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createPasswordFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('password-id');
+            expect(id).to.equal('panel-id-password-id');
             expect(label).to.equal('Password Label');
             return createStubbedFormGroup('stubbed-password-form-group');
         });
@@ -167,7 +167,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with single-selection form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createSingleSelectionFormGroup').callsFake(function (id, label, values) {
-            expect(id).to.equal('single-selection-id');
+            expect(id).to.equal('panel-id-single-selection-id');
             expect(label).to.equal('Single Selection Label');
             expect(values).to.deep.equal([
                 'First Value',
@@ -193,7 +193,7 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with multiple-selection form group', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createMultipleSelectionFormGroup').callsFake(function (id, label, values) {
-            expect(id).to.equal('multiple-selection-id');
+            expect(id).to.equal('panel-id-multiple-selection-id');
             expect(label).to.equal('Multiple Selection Label');
             expect(values).to.deep.equal([
                 'First Value',
@@ -219,12 +219,12 @@ describe('Action Panel Factory', function () {
 
     it('should create action panel with multiple form groups by order', function () {
         sandbox.stub(ActionFormGroupInputFactory, 'createTextFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('text-id');
+            expect(id).to.equal('panel-id-text-id');
             expect(label).to.equal('Text Label');
             return createStubbedFormGroup('stubbed-text-form-group');
         });
         sandbox.stub(ActionFormGroupInputFactory, 'createDateFormGroup').callsFake(function (id, label) {
-            expect(id).to.equal('date-id');
+            expect(id).to.equal('panel-id-date-id');
             expect(label).to.equal('Date Label');
             return createStubbedFormGroup('stubbed-date-form-group');
         });

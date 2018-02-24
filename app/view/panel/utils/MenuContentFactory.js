@@ -4,9 +4,9 @@ var MenuItemFactory = require('./MenuItemFactory');
 function createSubMenuItem(subMenuItemId, subMenuItemConfig) {
     switch (subMenuItemConfig.type) {
         case 'header':
-            return MenuItemFactory.createHeaderItem(subMenuItemId, subMenuItemConfig.display);
+            return MenuItemFactory.createHeaderItem(subMenuItemId, subMenuItemConfig.run);
         case 'link':
-            return MenuItemFactory.createLinkItem(subMenuItemId, subMenuItemConfig.link, subMenuItemConfig.display);
+            return MenuItemFactory.createLinkItem(subMenuItemId, subMenuItemConfig.link, subMenuItemConfig.run);
         default:
             throw 'Sub menu configuration must have a valid type [link|menu|text|header]';
     }
@@ -24,7 +24,7 @@ function createSubMenuItems(subMenuId, itemConfig) {
 function createSubMenu(menuItemId, menuItemConfig) {
     var subMenuId = menuItemId + '-sub-menu';
     var subMenuDropDownToggleId = subMenuId + '-dropdown-toggle';
-    var dropDownToggle = ElementFactory.createElementWithIdClassNameAndTextNode('a', subMenuDropDownToggleId, 'dropdown-toggle', menuItemConfig.display + ' ');
+    var dropDownToggle = ElementFactory.createElementWithIdClassNameAndTextNode('a', subMenuDropDownToggleId, 'dropdown-toggle', menuItemConfig.run + ' ');
     dropDownToggle.href = '#';
     dropDownToggle.setAttribute('role', 'button');
     dropDownToggle.setAttribute('data-toggle', 'dropdown');
@@ -41,11 +41,11 @@ function createSubMenu(menuItemId, menuItemConfig) {
 function createMenuItem(menuItemId, menuItemConfig) {
     switch (menuItemConfig.type) {
         case 'text':
-            return MenuItemFactory.createTextItem(menuItemId, menuItemConfig.display);
+            return MenuItemFactory.createTextItem(menuItemId, menuItemConfig.run);
         case 'active_link':
-            return MenuItemFactory.createActiveLinkItem(menuItemId, menuItemConfig.link, menuItemConfig.display);
+            return MenuItemFactory.createActiveLinkItem(menuItemId, menuItemConfig.link, menuItemConfig.run);
         case 'link':
-            return MenuItemFactory.createLinkItem(menuItemId, menuItemConfig.link, menuItemConfig.display);
+            return MenuItemFactory.createLinkItem(menuItemId, menuItemConfig.link, menuItemConfig.run);
         case 'menu':
             return createSubMenu(menuItemId, menuItemConfig);
         default:

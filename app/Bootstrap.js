@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var MenuConfiguration = require('./config/MenuConfiguration');
+var MenuConfiguration = require('./content/menu/MenuConfiguration');
 var Router = require('./Router');
 
 var Document = require('./view/Document');

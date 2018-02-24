@@ -1,8 +1,9 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanelPageView = require('../../../../app/page/view/ActionPanelPageView');
-var ActionPanelPageInitialActionPanel = require('../../../../app/page/view/content/ActionPanelPageInitialActionPanel');
+var ActionPanelPagePresenter = require('../../../../app/content/action_panel/ActionPanelPagePresenter');
+var ActionPanelPageModel = require('../../../../app/content/action_panel/ActionPanelPageModel');
+var ActionPanelPageInitialActionPanel = require('../../../../app/content/action_panel/ActionPanelPageInitialActionPanel');
 
 describe('Action Panel Page View', function () {
 
@@ -24,11 +25,9 @@ describe('Action Panel Page View', function () {
             return 'Stubbed Initial Panel';
         });
 
-        var stubbedModel = {
-            getInitialActionPanelConfiguration: function () {
-                return 'Stubbed Initial Action Panel Configuration';
-            }
-        };
+        sandbox.stub(ActionPanelPageModel, 'getInitialActionPanelConfiguration').callsFake(function() {
+            return 'Stubbed Initial Action Panel Configuration';
+        });
 
         var stubbedContainer = {
             appendChild: function (panel) {
@@ -37,6 +36,6 @@ describe('Action Panel Page View', function () {
             }
         };
 
-        ActionPanelPageView.display(stubbedContainer, stubbedModel);
+        ActionPanelPagePresenter.run(stubbedContainer);
     });
 });

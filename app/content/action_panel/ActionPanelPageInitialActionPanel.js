@@ -1,11 +1,11 @@
-var UI = require('../../../view/PassiveViewAPI');
+var UI = require('../../view/PassiveViewAPI');
 
 function createInitialActionPanel(initialActionPanelConfiguration) {
     var initialActionPanel = UI.panel.ActionPanel.createActionPanel(
-        'page-action-initial-panel', 'Initial Action Panel', initialActionPanelConfiguration
+        'content-action-initial-panel', 'Initial Action Panel', initialActionPanelConfiguration
     );
     var initialButton = UI.element.Button.createPrimaryButtonWithGlyphIcon(
-        'page-action-initial-button', UI.element.GlyphIcon.USER(), 'Submit',
+        'content-action-initial-button', UI.element.GlyphIcon.USER(), 'Submit',
         function() {
             console.log(UI.panel.ActionPanel.retrieveActionPanelData(initialActionPanel));
         }

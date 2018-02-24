@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var _ = require('underscore');
-var MenuConfiguration = require('../../../app/config/MenuConfiguration');
+var MenuConfiguration = require('../../../../app/content/menu/MenuConfiguration');
 
 describe('Menu Configuration', function () {
 
@@ -75,8 +75,8 @@ describe('Menu Configuration', function () {
     it('should have only valid menu link items', function () {
         _.each(getAllMenuItemsOfType('link'), function (menuItem) {
             expect(['link']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
             expect(menuItem.link).not.to.be.undefined;
             expect(menuItem.link).not.to.be.empty;
             expect(menuItem.link[0]).to.equal('?');
@@ -87,8 +87,8 @@ describe('Menu Configuration', function () {
     it('should have only valid menu active link items', function () {
         _.each(getAllMenuItemsOfType('link'), function (menuItem) {
             expect(['link']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
             expect(menuItem.link).not.to.be.undefined;
             expect(menuItem.link).not.to.be.empty;
             expect(menuItem.link[0]).to.equal('?');
@@ -99,8 +99,8 @@ describe('Menu Configuration', function () {
     it('should have only valid menu menu items', function () {
         _.each(getAllMenuItemsOfType('menu'), function (menuItem) {
             expect(['menu']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
             expect(menuItem.children).not.to.be.undefined;
             expect(menuItem.children.length).to.be.greaterThan(0);
         });
@@ -109,24 +109,24 @@ describe('Menu Configuration', function () {
     it('should have only valid menu header items', function () {
         _.each(getAllMenuItemsOfType('header'), function (menuItem) {
             expect(['header']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
         });
     });
 
     it('should have only valid menu text items', function () {
         _.each(getAllMenuItemsOfType('text'), function (menuItem) {
             expect(['text']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
         });
     });
 
     it('should have only valid sub menu active link items', function () {
         _.each(getAllSubMenuItemsOfType('link'), function (menuItem) {
             expect(['link']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
             expect(menuItem.link).not.to.be.undefined;
             expect(menuItem.link).not.to.be.empty;
             expect(menuItem.link[0]).to.equal('?');
@@ -137,8 +137,8 @@ describe('Menu Configuration', function () {
     it('should have only valid sub menu header items', function () {
         _.each(getAllSubMenuItemsOfType('header'), function (menuItem) {
             expect(['header']).to.contain(menuItem.type);
-            expect(menuItem.display).not.to.be.undefined;
-            expect(menuItem.display).not.to.be.empty;
+            expect(menuItem.run).not.to.be.undefined;
+            expect(menuItem.run).not.to.be.empty;
         });
     });
 });

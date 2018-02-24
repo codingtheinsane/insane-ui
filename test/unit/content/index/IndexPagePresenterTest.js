@@ -1,8 +1,9 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var IndexPageView = require('../../../../app/page/view/IndexPageView');
-var IndexPageLogInPanel = require('../../../../app/page/view/content/IndexPageLogInPanel');
+var IndexPageView = require('../../../../app/content/index/IndexPagePresenter');
+var IndexPageModel = require('../../../../app/content/index/IndexPageModel');
+var IndexPageLogInPanel = require('../../../../app/content/index/IndexPageLogInPanel');
 
 describe('Index Page View', function () {
 
@@ -24,11 +25,9 @@ describe('Index Page View', function () {
             return 'Stubbed Log In Panel';
         });
 
-        var stubbedModel = {
-            getLogInActionPanelConfiguration: function () {
-                return 'Stubbed Log In Action Panel Configuration';
-            }
-        };
+        sandbox.stub(IndexPageModel, 'getLogInActionPanelConfiguration').callsFake(function () {
+            return 'Stubbed Log In Action Panel Configuration';
+        });
 
         var stubbedContainer = {
             appendChild: function (panel) {
@@ -37,6 +36,6 @@ describe('Index Page View', function () {
             }
         };
 
-        IndexPageView.display(stubbedContainer, stubbedModel);
+        IndexPageView.run(stubbedContainer);
     });
 });

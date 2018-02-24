@@ -1,13 +1,13 @@
 var _ = require('underscore');
-var IndexPageController = require('./page/IndexPageController');
-var ActionPanelPageController = require('./page/ActionPanelPageController');
+var IndexPagePresenter = require('./content/index/IndexPagePresenter');
+var ActionPanelPagePresenter = require('./content/action_panel/ActionPanelPagePresenter');
 
 var controllerMapping = [
-    {'controller': ActionPanelPageController, 'query': '?/panel/ActionPanel'}
+    {'controller': ActionPanelPagePresenter, 'query': '?/panel/ActionPanel/'}
 ];
 
 function getPageControllerFromCurrentHRef(currentHRef) {
-    var controller = IndexPageController;
+    var controller = IndexPagePresenter;
     _.each(controllerMapping, function (url) {
         if (currentHRef.endsWith(url.query)) {
             controller = url.controller;

@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var IndexPageModel = require('../../../../app/page/model/IndexPageModel');
+var IndexPageModel = require('../../../../app/content/index/IndexPageModel');
 var UI = require('../../../../app/view/PassiveViewAPI');
 
 describe('Index Page Model', function () {

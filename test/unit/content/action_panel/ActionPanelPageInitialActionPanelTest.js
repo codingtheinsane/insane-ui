@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanelPageInitialActionPanel = require('../../../../../app/page/view/content/ActionPanelPageInitialActionPanel');
-var UI = require('../../../../../app/view/PassiveViewAPI');
+var ActionPanelPageInitialActionPanel = require('../../../../app/content/action_panel/ActionPanelPageInitialActionPanel');
+var UI = require('../../../../app/view/PassiveViewAPI');
 
 describe('Action Panel Page Initial Action Panel', function () {
 
@@ -20,7 +20,7 @@ describe('Action Panel Page Initial Action Panel', function () {
         });
 
         sandbox.stub(UI.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
-            expect(id).to.equal('page-action-initial-panel');
+            expect(id).to.equal('content-action-initial-panel');
             expect(title).to.equal('Initial Action Panel');
             expect(config).to.equal('Stubbed Initial Action Panel Configuration');
             return 'Stubbed Initial Panel';
@@ -33,7 +33,7 @@ describe('Action Panel Page Initial Action Panel', function () {
 
     it('should create initial panel with initial action panel configuration and append it to container', function () {
         sandbox.stub(UI.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText) {
-            expect(id).to.equal('page-action-initial-button');
+            expect(id).to.equal('content-action-initial-button');
             expect(glyphIcon).to.equal('User Glyph Icon');
             expect(buttonText).to.equal('Submit');
             return 'Stubbed Initial Button';
@@ -47,7 +47,7 @@ describe('Action Panel Page Initial Action Panel', function () {
         };
 
         sandbox.stub(UI.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText, callback) {
-            expect(id).to.equal('page-action-initial-button');
+            expect(id).to.equal('content-action-initial-button');
             expect(glyphIcon).to.equal('User Glyph Icon');
             expect(buttonText).to.equal('Submit');
             buttonCallback = callback();

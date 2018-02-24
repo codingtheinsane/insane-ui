@@ -2,11 +2,11 @@ function getLogInActionPanelConfiguration() {
     return [{
         'label': 'Username',
         'type': 'text',
-        'id': 'page-index-login-username'
+        'id': 'content-index-login-username'
     }, {
         'label': 'Password',
         'type': 'password',
-        'id': 'page-index-login-password'
+        'id': 'content-index-login-password'
     }];
 }
 

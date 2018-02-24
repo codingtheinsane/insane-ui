@@ -1,6 +1,6 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var ActionPanelDataRetriever = require('../../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelDataRetriever');
+var ActionPanelDataRetriever = require('../../../../../app/view/panel/utils/ActionPanelDataRetriever');
 
 describe('Action Panel Data Retriever', function () {
 

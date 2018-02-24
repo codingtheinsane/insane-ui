@@ -1,4 +1,4 @@
-var UI = require('./ui/UI');
+var UI = require('../../../view/PassiveViewAPI');
 
 function createLogInPanel(loginActionPanelConfiguration) {
     var logInActionPanel = UI.panel.ActionPanel.createActionPanel(

@@ -2,7 +2,7 @@ var $ = require('jquery');
 var MenuConfiguration = require('./config/MenuConfiguration');
 var Router = require('./Router');
 
-var Document = require('./page/view/content/ui/Document');
+var Document = require('./view/Document');
 
 function createPageContentOnDocumentReady() {
     Router.getPageControllerFromCurrentHRef(window.location.href)

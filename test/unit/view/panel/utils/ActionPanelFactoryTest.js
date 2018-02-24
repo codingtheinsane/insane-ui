@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanelFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/ActionPanelFactory');
-var ActionFormGroupInputFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/ActionFormGroupInputFactory');
+var ActionPanelFactory = require('../../../../../app/view/panel/utils/ActionPanelFactory');
+var ActionFormGroupInputFactory = require('../../../../../app/view/panel/utils/ActionFormGroupInputFactory');
 
 describe('Action Panel Factory', function () {
 

@@ -1,7 +1,7 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
-var ElementFactory = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/ElementFactory');
-var ElementDestructor = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/ElementDestructor');
+var ElementFactory = require('../../../../../../app/view/panel/utils/element/ElementFactory');
+var ElementDestructor = require('../../../../../../app/view/panel/utils/element/ElementDestructor');
 
 describe('Element Factory', function () {
 

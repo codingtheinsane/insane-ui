@@ -1,5 +1,5 @@
 var jsdom = require('mocha-jsdom');
-var TimeKeeper = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/TimeKeeper');
+var TimeKeeper = require('../../../../../../app/view/panel/utils/element/TimeKeeper');
 
 describe('Time Keeper', function () {
 

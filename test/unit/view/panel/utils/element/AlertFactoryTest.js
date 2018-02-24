@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var AlertFactory = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/AlertFactory');
-var ElementDestructor = require('../../../../../../../../../app/page/view/content/ui/panel/utils/element/ElementDestructor');
+var AlertFactory = require('../../../../../../app/view/panel/utils/element/AlertFactory');
+var ElementDestructor = require('../../../../../../app/view/panel/utils/element/ElementDestructor');
 
 describe('Alert Factory', function () {
 

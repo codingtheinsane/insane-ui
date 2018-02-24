@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var ActionPanelPageModel = require('../../../../app/page/model/ActionPanelPageModel');
-var UI = require('../../../../app/page/view/content/ui/UI');
+var UI = require('../../../../app/view/PassiveViewAPI');
 
 describe('Action Panel Page Model', function () {
 

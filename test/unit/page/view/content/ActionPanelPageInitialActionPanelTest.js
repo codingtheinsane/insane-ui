@@ -2,7 +2,7 @@ var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var ActionPanelPageInitialActionPanel = require('../../../../../app/page/view/content/ActionPanelPageInitialActionPanel');
-var UI = require('../../../../../app/page/view/content/ui/UI');
+var UI = require('../../../../../app/view/PassiveViewAPI');
 
 describe('Action Panel Page Initial Action Panel', function () {
 

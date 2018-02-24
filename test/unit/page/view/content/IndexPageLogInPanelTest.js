@@ -2,7 +2,7 @@ var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var IndexPageLogInPanel = require('../../../../../app/page/view/content/IndexPageLogInPanel');
-var UI = require('../../../../../app/page/view/content/ui/UI');
+var UI = require('../../../../../app/view/PassiveViewAPI');
 
 describe('Index Page Log In Panel', function () {
 

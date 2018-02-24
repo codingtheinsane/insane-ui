@@ -1,8 +1,8 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var InputFactory = require('../../../../../../../../app/page/view/content/ui/panel/utils/InputFactory');
-var SelectPicker = require('../../../../../../../../app/page/view/content/ui/panel/utils/external/SelectPicker');
+var InputFactory = require('../../../../../app/view/panel/utils/InputFactory');
+var SelectPicker = require('../../../../../app/view/panel/utils/external/SelectPicker');
 
 describe('Input Factory', function () {
 

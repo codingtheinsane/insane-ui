@@ -1,4 +1,4 @@
-var UI = require('./ui/UI');
+var UI = require('../../../view/PassiveViewAPI');
 
 function createInitialActionPanel(initialActionPanelConfiguration) {
     var initialActionPanel = UI.panel.ActionPanel.createActionPanel(

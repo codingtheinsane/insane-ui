@@ -2,7 +2,7 @@ var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var IndexPageLogInPanel = require('../../../../app/content/index/IndexPageLogInPanel');
-var UI = require('../../../../app/view/PassiveViewAPI');
+var View = require('../../../../app/view/PassiveViewAPI');
 
 describe('Index Page Log In Panel', function () {
 
@@ -19,20 +19,20 @@ describe('Index Page Log In Panel', function () {
     });
 
     it('should create log in panel with log in action panel configuration and append it to container', function () {
-        sandbox.stub(UI.panel.Utilities);
+        sandbox.stub(View.panel.Utilities);
 
-        sandbox.stub(UI.element.GlyphIcon, 'USER').callsFake(function () {
+        sandbox.stub(View.element.GlyphIcon, 'USER').callsFake(function () {
             return 'User Glyph Icon';
         });
 
-        sandbox.stub(UI.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
+        sandbox.stub(View.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
             expect(id).to.equal('content-index-login-panel');
             expect(title).to.equal('Login Panel');
             expect(config).to.equal('Stubbed Log In Action Panel Configuration');
             return 'Stubbed Log In Panel';
         });
 
-        sandbox.stub(UI.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText) {
+        sandbox.stub(View.element.Button, 'createPrimaryButtonWithGlyphIcon').callsFake(function (id, glyphIcon, buttonText) {
             expect(id).to.equal('content-index-login-button');
             expect(glyphIcon).to.equal('User Glyph Icon');
             expect(buttonText).to.equal('Log In');

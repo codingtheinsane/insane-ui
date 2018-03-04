@@ -6,52 +6,6 @@ describe('Menu Content Factory', function () {
 
     jsdom();
 
-    function createMenuContent(content) {
-        return MenuContentFactory.createMenuContent('ui-menu', 'ui-menu-collapsible-content', content);
-    }
-
-    function createExpectedMenuContent(menuInnerHtml) {
-        return '<div id="ui-menu-collapsible-content" class="navbar-collapse collapse">'
-            + menuInnerHtml
-            + '</div>';
-    }
-
-    function createExpectedLeftMenuContent(leftMenuInnerHtml) {
-        return createExpectedMenuContent('<ul id="ui-menu-content-left" class="nav navbar-nav">'
-            + leftMenuInnerHtml
-            + '</ul>');
-    }
-
-    function createExpectedRightMenuContent(rightMenuInnerHtml) {
-        return createExpectedMenuContent('<ul id="ui-menu-content-right" class="nav navbar-nav navbar-right">'
-            + rightMenuInnerHtml
-            + '</ul>');
-    }
-
-    function createExpectedLeftSubMenuContent(leftSubMenuInnerHtml) {
-        return createExpectedLeftMenuContent(
-            '<li id="ui-menu-content-left-menu-1-sub-menu" class="dropdown">'
-            + '<a id="ui-menu-content-left-menu-1-sub-menu-dropdown-toggle" class="dropdown-toggle" '
-            + 'href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-            + 'Menu Item <span id="ui-menu-content-left-menu-1-sub-menu-dropdown-toggle-caret" class="caret"></span></a>'
-            + '<ul id="ui-menu-content-left-menu-1-sub-menu-items" class="dropdown-menu">'
-            + leftSubMenuInnerHtml
-            + '</ul></li>'
-        );
-    }
-
-    function createExpectedRightSubMenuContent(rightSubMenuInnerHtml) {
-        return createExpectedRightMenuContent(
-            '<li id="ui-menu-content-right-menu-1-sub-menu" class="dropdown">'
-            + '<a id="ui-menu-content-right-menu-1-sub-menu-dropdown-toggle" class="dropdown-toggle" '
-            + 'href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
-            + 'Menu Item <span id="ui-menu-content-right-menu-1-sub-menu-dropdown-toggle-caret" class="caret"></span></a>'
-            + '<ul id="ui-menu-content-right-menu-1-sub-menu-items" class="dropdown-menu">'
-            + rightSubMenuInnerHtml
-            + '</ul></li>'
-        );
-    }
-
     it('should create menu with no items', function () {
         var EXPECTED_EMPTY_MENU = createExpectedMenuContent('');
         var menu = createMenuContent({});
@@ -373,4 +327,50 @@ describe('Menu Content Factory', function () {
         expect(menuWithLeftMenuDefinedFirst.outerHTML).to.equal(EXPECTED_MENU);
         expect(menuWithRightMenuDefinedFirst.outerHTML).to.equal(EXPECTED_MENU);
     });
+
+    function createMenuContent(content) {
+        return MenuContentFactory.createMenuContent('ui-menu', 'ui-menu-collapsible-content', content);
+    }
+
+    function createExpectedMenuContent(menuInnerHtml) {
+        return '<div id="ui-menu-collapsible-content" class="navbar-collapse collapse">'
+            + menuInnerHtml
+            + '</div>';
+    }
+
+    function createExpectedLeftMenuContent(leftMenuInnerHtml) {
+        return createExpectedMenuContent('<ul id="ui-menu-content-left" class="nav navbar-nav">'
+            + leftMenuInnerHtml
+            + '</ul>');
+    }
+
+    function createExpectedRightMenuContent(rightMenuInnerHtml) {
+        return createExpectedMenuContent('<ul id="ui-menu-content-right" class="nav navbar-nav navbar-right">'
+            + rightMenuInnerHtml
+            + '</ul>');
+    }
+
+    function createExpectedLeftSubMenuContent(leftSubMenuInnerHtml) {
+        return createExpectedLeftMenuContent(
+            '<li id="ui-menu-content-left-menu-1-sub-menu" class="dropdown">'
+            + '<a id="ui-menu-content-left-menu-1-sub-menu-dropdown-toggle" class="dropdown-toggle" '
+            + 'href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+            + 'Menu Item <span id="ui-menu-content-left-menu-1-sub-menu-dropdown-toggle-caret" class="caret"></span></a>'
+            + '<ul id="ui-menu-content-left-menu-1-sub-menu-items" class="dropdown-menu">'
+            + leftSubMenuInnerHtml
+            + '</ul></li>'
+        );
+    }
+
+    function createExpectedRightSubMenuContent(rightSubMenuInnerHtml) {
+        return createExpectedRightMenuContent(
+            '<li id="ui-menu-content-right-menu-1-sub-menu" class="dropdown">'
+            + '<a id="ui-menu-content-right-menu-1-sub-menu-dropdown-toggle" class="dropdown-toggle" '
+            + 'href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+            + 'Menu Item <span id="ui-menu-content-right-menu-1-sub-menu-dropdown-toggle-caret" class="caret"></span></a>'
+            + '<ul id="ui-menu-content-right-menu-1-sub-menu-items" class="dropdown-menu">'
+            + rightSubMenuInnerHtml
+            + '</ul></li>'
+        );
+    }
 });

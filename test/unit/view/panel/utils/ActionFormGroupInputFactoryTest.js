@@ -8,21 +8,6 @@ describe('Action Form Group Input Factory', function () {
 
     jsdom();
 
-    function createExpectedFormGroupOutterHtmlForInput(inputInnerHtml) {
-        return '<div id="input-id-form-group" class="form-group">'
-            + '<label id="input-id-label" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="input-id">Input Label</label>'
-            + '<div id="input-id-form-group-selection" class="col-xs-10 col-sm-10 col-md-10 col-lg-10">'
-            + inputInnerHtml
-            + '</div>'
-            + '</div>';
-    }
-
-    function createStubbedInputFactoryResponseWithId(inputId) {
-        var element = document.createElement('div');
-        element.id = inputId;
-        return element;
-    }
-
     var sandbox;
 
     beforeEach(function () {
@@ -168,4 +153,19 @@ describe('Action Form Group Input Factory', function () {
             '<div id="stubbed-multiple-selection-input"></div>'
         ));
     });
+
+    function createExpectedFormGroupOutterHtmlForInput(inputInnerHtml) {
+        return '<div id="input-id-form-group" class="form-group">'
+            + '<label id="input-id-label" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2" for="input-id">Input Label</label>'
+            + '<div id="input-id-form-group-selection" class="col-xs-10 col-sm-10 col-md-10 col-lg-10">'
+            + inputInnerHtml
+            + '</div>'
+            + '</div>';
+    }
+
+    function createStubbedInputFactoryResponseWithId(inputId) {
+        var element = document.createElement('div');
+        element.id = inputId;
+        return element;
+    }
 });

@@ -10,13 +10,6 @@ describe('Alert Factory', function () {
 
     var sandbox;
 
-    function createExpectedAlert(alertClassName, glyphIconClassName) {
-        return '<div id="alert-id" class="alert ' + alertClassName + ' alert-dismissable">'
-            + '<span class="glyphicon ' + glyphIconClassName + '"></span>'
-            + '<a id="alert-id-close-button" class="close ui-alert-close-button" href="#" data-dismiss="alert" aria-label="close">×</a> <strong id="alert-id-text">Alert Text</strong>'
-            + '</div>';
-    }
-
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
     });
@@ -64,4 +57,11 @@ describe('Alert Factory', function () {
 
         AlertFactory.createDangerAlert('alert-id', 'Alert Text', 0.005);
     });
+
+    function createExpectedAlert(alertClassName, glyphIconClassName) {
+        return '<div id="alert-id" class="alert ' + alertClassName + ' alert-dismissable">'
+            + '<span class="glyphicon ' + glyphIconClassName + '"></span>'
+            + '<a id="alert-id-close-button" class="close ui-alert-close-button" href="#" data-dismiss="alert" aria-label="close">×</a> <strong id="alert-id-text">Alert Text</strong>'
+            + '</div>';
+    }
 });

@@ -4,62 +4,6 @@ var MenuConfiguration = require('../../../../app/content/menu/MenuConfiguration'
 
 describe('Menu Configuration', function () {
 
-    function getAllSubMenuItemsFromMenu(menu) {
-        var subMenuItems = [];
-        _.each(menu, function (menuItem) {
-            if (menuItem.children) {
-                _.each(menuItem.children, function (subMenuItem) {
-                    subMenuItems.push(subMenuItem);
-                });
-            }
-        });
-        return subMenuItems;
-    }
-
-    function getAllSubMenuItems() {
-        var menuItems = [];
-        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.left));
-        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.right));
-        return menuItems;
-    }
-
-    function getAllSubMenuItemsOfType(type) {
-        var subMenuItemsOfType = [];
-        var subMenuItems = getAllSubMenuItems();
-        _.each(subMenuItems, function (subMenuItem) {
-            if (subMenuItem.type === type) {
-                subMenuItemsOfType.push(subMenuItem);
-            }
-        });
-        return subMenuItemsOfType;
-    }
-
-    function getAllMenuItemsFromMenu(menu) {
-        var menuItems = [];
-        _.each(menu, function (menuItem) {
-            menuItems.push(menuItem);
-        });
-        return menuItems;
-    }
-
-    function getAllMenuItems() {
-        var menuItems = [];
-        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.left));
-        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.right));
-        return menuItems;
-    }
-
-    function getAllMenuItemsOfType(type) {
-        var menuItemsOfType = [];
-        var menuItems = getAllMenuItems();
-        _.each(menuItems, function (menuItem) {
-            if (menuItem.type === type) {
-                menuItemsOfType.push(menuItem);
-            }
-        });
-        return menuItemsOfType;
-    }
-
     it('should have only valid menu types', function () {
         _.each(getAllMenuItems(), function (menuItem) {
             expect(['link', 'active_link', 'menu', 'text']).to.contain(menuItem.type);
@@ -141,4 +85,60 @@ describe('Menu Configuration', function () {
             expect(menuItem.run).not.to.be.empty;
         });
     });
+
+    function getAllSubMenuItemsFromMenu(menu) {
+        var subMenuItems = [];
+        _.each(menu, function (menuItem) {
+            if (menuItem.children) {
+                _.each(menuItem.children, function (subMenuItem) {
+                    subMenuItems.push(subMenuItem);
+                });
+            }
+        });
+        return subMenuItems;
+    }
+
+    function getAllSubMenuItems() {
+        var menuItems = [];
+        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.left));
+        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.right));
+        return menuItems;
+    }
+
+    function getAllSubMenuItemsOfType(type) {
+        var subMenuItemsOfType = [];
+        var subMenuItems = getAllSubMenuItems();
+        _.each(subMenuItems, function (subMenuItem) {
+            if (subMenuItem.type === type) {
+                subMenuItemsOfType.push(subMenuItem);
+            }
+        });
+        return subMenuItemsOfType;
+    }
+
+    function getAllMenuItemsFromMenu(menu) {
+        var menuItems = [];
+        _.each(menu, function (menuItem) {
+            menuItems.push(menuItem);
+        });
+        return menuItems;
+    }
+
+    function getAllMenuItems() {
+        var menuItems = [];
+        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.left));
+        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.right));
+        return menuItems;
+    }
+
+    function getAllMenuItemsOfType(type) {
+        var menuItemsOfType = [];
+        var menuItems = getAllMenuItems();
+        _.each(menuItems, function (menuItem) {
+            if (menuItem.type === type) {
+                menuItemsOfType.push(menuItem);
+            }
+        });
+        return menuItemsOfType;
+    }
 });

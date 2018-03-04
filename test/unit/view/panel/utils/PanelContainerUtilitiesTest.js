@@ -10,49 +10,6 @@ describe('Panel Container Utilities', function () {
 
     var DEFAULT_PANEL_CONTENT = createExpectedPanelContent('', '', '', '', '');
 
-    function createExpectedPanelContent(alertTopContainerInnerHtml, buttonTopContainerInnerHtml,
-                                        contentContainerInnerHtml,
-                                        alertBottomContainerInnerHtml, buttonBottomContainerInnerHtml) {
-        return '<div id="panel-id" class="panel panel-default">'
-            + '<div id="panel-id-heading" class="panel-heading">Panel Title</div>'
-            + '<div id="panel-id-body" class="panel-body">'
-            + '<div id="panel-id-alert-top-container" class="ui-alert-top-container">'
-            + alertTopContainerInnerHtml
-            + '</div>'
-            + '<div id="panel-id-button-top-container" class="ui-button-top-container">'
-            + buttonTopContainerInnerHtml
-            + '</div>'
-            + '<div id="panel-id-body-content" class="ui-body-content-container">'
-            + contentContainerInnerHtml
-            + '</div>'
-            + '<div id="panel-id-alert-bottom-container" class="ui-alert-bottom-container">'
-            + alertBottomContainerInnerHtml
-            + '</div>'
-            + '<div id="panel-id-button-bottom-container" class="ui-button-bottom-container">'
-            + buttonBottomContainerInnerHtml
-            + '</div></div></div>';
-    }
-
-    function createExpectedAlertTopContainerContent(alertTopContainerInnerHtml) {
-        return createExpectedPanelContent(alertTopContainerInnerHtml, '', '', '', '');
-    }
-
-    function createExpectedButtonTopContainerContent(buttonTopContainerInnerHtml) {
-        return createExpectedPanelContent('', buttonTopContainerInnerHtml, '', '', '');
-    }
-
-    function createExpectedBodyContainerContent(contentContainerInnerHtml) {
-        return createExpectedPanelContent('', '', contentContainerInnerHtml, '', '');
-    }
-
-    function createExpectedAlertBottomContainerContent(alertBottomContainerInnerHtml) {
-        return createExpectedPanelContent('', '', '', alertBottomContainerInnerHtml, '');
-    }
-
-    function createExpectedButtonBottomContainerContent(buttonBottomContainerInnerHtml) {
-        return createExpectedPanelContent('', '', '', '', buttonBottomContainerInnerHtml);
-    }
-
     it('should add alert to bottom container', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var alert = ElementFactory.createElementWithId('div', 'bottom-alert');
@@ -150,8 +107,6 @@ describe('Panel Container Utilities', function () {
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
-
-
     it('should add multiple buttons to bottom container by order', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var firstButton = ElementFactory.createElementWithId('button', 'top-button');
@@ -163,6 +118,8 @@ describe('Panel Container Utilities', function () {
         PanelContainerUtilities.addButtonToBottomContainer(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
+
+
 
     it('should add multiple buttons to top container by order', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
@@ -405,4 +362,47 @@ describe('Panel Container Utilities', function () {
         PanelContainerUtilities.removeContentFromContainer(panel, someContent);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
+
+    function createExpectedPanelContent(alertTopContainerInnerHtml, buttonTopContainerInnerHtml,
+                                        contentContainerInnerHtml,
+                                        alertBottomContainerInnerHtml, buttonBottomContainerInnerHtml) {
+        return '<div id="panel-id" class="panel panel-default">'
+            + '<div id="panel-id-heading" class="panel-heading">Panel Title</div>'
+            + '<div id="panel-id-body" class="panel-body">'
+            + '<div id="panel-id-alert-top-container" class="ui-alert-top-container">'
+            + alertTopContainerInnerHtml
+            + '</div>'
+            + '<div id="panel-id-button-top-container" class="ui-button-top-container">'
+            + buttonTopContainerInnerHtml
+            + '</div>'
+            + '<div id="panel-id-body-content" class="ui-body-content-container">'
+            + contentContainerInnerHtml
+            + '</div>'
+            + '<div id="panel-id-alert-bottom-container" class="ui-alert-bottom-container">'
+            + alertBottomContainerInnerHtml
+            + '</div>'
+            + '<div id="panel-id-button-bottom-container" class="ui-button-bottom-container">'
+            + buttonBottomContainerInnerHtml
+            + '</div></div></div>';
+    }
+
+    function createExpectedAlertTopContainerContent(alertTopContainerInnerHtml) {
+        return createExpectedPanelContent(alertTopContainerInnerHtml, '', '', '', '');
+    }
+
+    function createExpectedButtonTopContainerContent(buttonTopContainerInnerHtml) {
+        return createExpectedPanelContent('', buttonTopContainerInnerHtml, '', '', '');
+    }
+
+    function createExpectedBodyContainerContent(contentContainerInnerHtml) {
+        return createExpectedPanelContent('', '', contentContainerInnerHtml, '', '');
+    }
+
+    function createExpectedAlertBottomContainerContent(alertBottomContainerInnerHtml) {
+        return createExpectedPanelContent('', '', '', alertBottomContainerInnerHtml, '');
+    }
+
+    function createExpectedButtonBottomContainerContent(buttonBottomContainerInnerHtml) {
+        return createExpectedPanelContent('', '', '', '', buttonBottomContainerInnerHtml);
+    }
 });

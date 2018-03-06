@@ -1,10 +1,10 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var IndexPageLogInPanel = require('../../../../app/content/index/IndexPageLogInPanel');
+var IndexPageLogInPanel = require('../../../../app/content/index/IndexPagePanelFactory');
 var View = require('../../../../app/view/PassiveViewAPI');
 
-describe('Index Page Log In Panel', function () {
+describe('Index Page Panel Factory', function () {
 
     jsdom();
 

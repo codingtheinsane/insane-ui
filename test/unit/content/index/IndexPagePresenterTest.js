@@ -1,9 +1,9 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var IndexPageView = require('../../../../app/content/index/IndexPagePresenter');
 var IndexPageModel = require('../../../../app/content/index/IndexPageModel');
-var IndexPageLogInPanel = require('../../../../app/content/index/IndexPageLogInPanel');
+var IndexPagePanelFactory = require('../../../../app/content/index/IndexPagePanelFactory');
+var IndexPagePresenter = require('../../../../app/content/index/IndexPagePresenter');
 
 describe('Index Page View', function () {
 
@@ -20,7 +20,7 @@ describe('Index Page View', function () {
     });
 
     it('should create log in panel with log in action panel configuration and append it to container', function (done) {
-        sandbox.stub(IndexPageLogInPanel, 'createLogInPanel').callsFake(function (logInPanelConfiguration) {
+        sandbox.stub(IndexPagePanelFactory, 'createLogInPanel').callsFake(function (logInPanelConfiguration) {
             expect(logInPanelConfiguration).to.equal('Stubbed Log In Action Panel Configuration');
             return 'Stubbed Log In Panel';
         });
@@ -36,6 +36,6 @@ describe('Index Page View', function () {
             }
         };
 
-        IndexPageView.run(stubbedContainer);
+        IndexPagePresenter.run(stubbedContainer);
     });
 });

@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 var MenuPresenter = require('../../../../app/content/menu/MenuPresenter');
 var MenuConfiguration = require('../../../../app/content/menu/MenuConfiguration');
-var MenuPanel = require('../../../../app/view/panel/MenuPanel');
+var PassiveViewAPI = require('../../../../app/view/PassiveViewAPI');
 var JqueryBootstrap = require('../../../../app/view/panel/utils/external/JqueryBoostrap');
 var SelectPicker = require('../../../../app/view/panel/utils/external/SelectPicker');
 
@@ -41,7 +41,7 @@ describe('Menu Presenter', function () {
     it('should create menu', function (done) {
         sandbox.stub(JqueryBootstrap, 'onDocumentLoadingSetupJqueryBootstrap');
         sandbox.stub(SelectPicker, 'onDocumentLoadingSetupSelectPicker');
-        sandbox.stub(MenuPanel, 'createMenu').callsFake(function (id, title, configuration) {
+        sandbox.stub(PassiveViewAPI.panel.MenuPanel, 'createMenu').callsFake(function (id, title, configuration) {
             expect(id).to.equal('ui-menu');
             expect(title).to.equal('Insane UI');
             expect(configuration).to.equal(MenuConfiguration);

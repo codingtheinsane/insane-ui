@@ -2,11 +2,13 @@ var AlertFactory = require('./panel/utils/element/AlertFactory');
 var ButtonFactory = require('./panel/utils/element/ButtonFactory');
 var GlyphIconFactory = require('./panel/utils/element/GlyphIconFactory');
 
-var ActionPanel = require('./panel/ActionPanel');
+var ActionPanelAPI = require('./panel/ActionPanelAPI');
+var MenuPanelAPI = require('./panel/MenuPanelAPI');
 
 module.exports = {
     'panel': {
-        'ActionPanel': ActionPanel
+        'ActionPanel': ActionPanelAPI,
+        'MenuPanel': MenuPanelAPI
     },
     'element': {
         'Alert': AlertFactory,

@@ -1,6 +1,6 @@
-var ElementFactory = require('./utils/element/ElementFactory');
-var MenuContentFactory = require('./utils/MenuContentFactory');
-var MenuHeaderFactory = require('./utils/MenuHeaderFactory');
+var ElementFactory = require('./element/ElementFactory');
+var MenuContentFactory = require('./MenuContentFactory');
+var MenuHeaderFactory = require('./MenuHeaderFactory');
 
 function createMenu(menuId, menuTitle, menuContent) {
     var collapsibleMenuContentElementUniqueId = menuId + '-collapsible-content';

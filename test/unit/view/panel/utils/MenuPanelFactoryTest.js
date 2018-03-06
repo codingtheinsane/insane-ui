@@ -1,11 +1,11 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var MenuPanel = require('../../../../app/view/panel/MenuPanel');
-var MenuHeaderFactory = require('../../../../app/view/panel/utils/MenuHeaderFactory');
-var MenuContentFactory = require('../../../../app/view/panel/utils/MenuContentFactory');
+var MenuPanelFactory = require('../../../../../app/view/panel/utils/MenuPanelFactory');
+var MenuHeaderFactory = require('../../../../../app/view/panel/utils/MenuHeaderFactory');
+var MenuContentFactory = require('../../../../../app/view/panel/utils/MenuContentFactory');
 
-describe('Menu Panel', function () {
+describe('Menu Panel Factory', function () {
 
     jsdom();
 
@@ -30,7 +30,7 @@ describe('Menu Panel', function () {
     });
 
     it('should create menu', function () {
-        var menu = MenuPanel.createMenu('ui-menu', 'Menu Title', 'Fake Menu Content');
+        var menu = MenuPanelFactory.createMenu('ui-menu', 'Menu Title', 'Fake Menu Content');
 
         sinon.assert.calledOnce(MenuHeaderFactory.createMenuHeader);
         sinon.assert.calledWithExactly(MenuHeaderFactory.createMenuHeader, 'ui-menu', 'ui-menu-collapsible-content', 'Menu Title');

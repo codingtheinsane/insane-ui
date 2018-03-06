@@ -1,7 +1,7 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanel = require('../../../../app/view/panel/ActionPanel');
+var ActionPanel = require('../../../../app/view/panel/ActionPanelAPI');
 var ActionPanelConfigurationValidator = require('../../../../app/view/panel/utils/ActionPanelConfigurationValidator');
 var ActionPanelDataRetriever = require('../../../../app/view/panel/utils/ActionPanelDataRetriever');
 var ActionPanelFactory = require('../../../../app/view/panel/utils/ActionPanelFactory');
@@ -9,7 +9,7 @@ var ElementDestructor = require('../../../../app/view/panel/utils/element/Elemen
 var PanelContainerFactory = require('../../../../app/view/panel/utils/PanelContainerFactory');
 var PanelContainerUtilities = require('../../../../app/view/panel/utils/PanelContainerUtilities');
 
-describe('Action Panel', function () {
+describe('Action Panel API', function () {
 
     jsdom();
 

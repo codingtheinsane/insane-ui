@@ -1,9 +1,9 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanelPagePresenter = require('../../../../app/content/action_panel/ActionPanelPagePresenter');
 var ActionPanelPageModel = require('../../../../app/content/action_panel/ActionPanelPageModel');
-var ActionPanelPageInitialActionPanel = require('../../../../app/content/action_panel/ActionPanelPageInitialActionPanel');
+var ActionPanelPagePanelFactory = require('../../../../app/content/action_panel/ActionPanelPagePanelFactory');
+var ActionPanelPagePresenter = require('../../../../app/content/action_panel/ActionPanelPagePresenter');
 
 describe('Action Panel Page View', function () {
 
@@ -20,7 +20,7 @@ describe('Action Panel Page View', function () {
     });
 
     it('should create initial panel with initial action panel configuration and append it to container', function (done) {
-        sandbox.stub(ActionPanelPageInitialActionPanel, 'createInitialActionPanel').callsFake(function (initialActionPanelConfiguration) {
+        sandbox.stub(ActionPanelPagePanelFactory, 'createInitialActionPanel').callsFake(function (initialActionPanelConfiguration) {
             expect(initialActionPanelConfiguration).to.equal('Stubbed Initial Action Panel Configuration');
             return 'Stubbed Initial Panel';
         });

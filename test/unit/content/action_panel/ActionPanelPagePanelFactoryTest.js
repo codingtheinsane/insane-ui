@@ -1,10 +1,10 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanelPageInitialActionPanel = require('../../../../app/content/action_panel/ActionPanelPageInitialActionPanel');
+var ActionPanelPagePanelFactory = require('../../../../app/content/action_panel/ActionPanelPagePanelFactory');
 var View = require('../../../../app/view/PassiveViewAPI');
 
-describe('Action Panel Page Initial Action Panel', function () {
+describe('Action Panel Page Panel Factory', function () {
 
     jsdom();
 
@@ -42,7 +42,7 @@ describe('Action Panel Page Initial Action Panel', function () {
             return 'Stubbed Initial Button';
         });
 
-        expect(ActionPanelPageInitialActionPanel.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+        expect(ActionPanelPagePanelFactory.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
     });
 
     it('should bind callback to submit button when creating panel', function (done) {
@@ -62,7 +62,7 @@ describe('Action Panel Page Initial Action Panel', function () {
             done();
         });
 
-        expect(ActionPanelPageInitialActionPanel.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+        expect(ActionPanelPagePanelFactory.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
         buttonCallback();
     });
 });

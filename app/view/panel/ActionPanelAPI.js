@@ -6,40 +6,40 @@ var PanelContainerFactory = require('./utils/PanelContainerFactory');
 var PanelContainerUtilities = require('./utils/PanelContainerUtilities');
 
 function addAlertToBottomPanel(container, alert) {
-    PanelContainerUtilities.addAlertToBottomContainer(container, alert);
+    PanelContainerUtilities.addAlertToBottomPanel(container, alert);
 }
 
 function addAlertToTopPanel(container, alert) {
-    PanelContainerUtilities.addAlertToTopContainer(container, alert);
+    PanelContainerUtilities.addAlertToTopPanel(container, alert);
 }
 
 function addButtonToBottomPanel(container, button) {
-    PanelContainerUtilities.addButtonToBottomContainer(container, button);
+    PanelContainerUtilities.addButtonToBottomPanel(container, button);
 }
 
 function addButtonToTopPanel(container, button) {
-    PanelContainerUtilities.addButtonToTopContainer(container, button);
+    PanelContainerUtilities.addButtonToTopPanel(container, button);
 }
 
-function clearAlerts(container) {
-    clearAlertTopPanel(container);
-    clearAlertFromBottomPanel(container);
+function clearAlertsFromContainer(container) {
+    clearAlertsFromTopPanel(container);
+    clearAlertsFromBottomPanel(container);
 }
 
-function clearAlertFromBottomPanel(container) {
-    PanelContainerUtilities.clearAlertBottomContainer(container);
+function clearAlertsFromBottomPanel(container) {
+    PanelContainerUtilities.clearAlertsFromBottomPanel(container);
 }
 
-function clearAlertTopPanel(container) {
-    PanelContainerUtilities.clearAlertTopContainer(container);
+function clearAlertsFromTopPanel(container) {
+    PanelContainerUtilities.clearAlertsFromTopPanel(container);
 }
 
-function clearButtonBottomPanel(container) {
-    PanelContainerUtilities.clearButtonBottomContainer(container);
+function clearButtonsFromBottomPanel(container) {
+    PanelContainerUtilities.clearButtonsFromBottomPanel(container);
 }
 
-function clearButtonTopPanel(container) {
-    PanelContainerUtilities.clearButtonTopContainer(container);
+function clearButtonsFromTopPanel(container) {
+    PanelContainerUtilities.clearButtonsFromTopPanel(container);
 }
 
 function createActionPanelContainer(panelId, panelTitle, panelConfiguration) {
@@ -64,19 +64,19 @@ function removeActionPanel(container) {
 }
 
 function removeAlertFromBottomPanel(container, alert) {
-    PanelContainerUtilities.removeAlertFromBottomContainer(container, alert);
+    PanelContainerUtilities.removeAlertFromBottomPanel(container, alert);
 }
 
 function removeAlertFromTopPanel(container, alert) {
-    PanelContainerUtilities.removeAlertFromTopContainer(container, alert);
+    PanelContainerUtilities.removeAlertFromTopPanel(container, alert);
 }
 
 function removeButtonFromBottomPanel(container, button) {
-    PanelContainerUtilities.removeButtonFromBottomContainer(container, button);
+    PanelContainerUtilities.removeButtonFromBottomPanel(container, button);
 }
 
 function removeButtonFromTopPanel(container, button) {
-    PanelContainerUtilities.removeButtonFromTopContainer(container, button);
+    PanelContainerUtilities.removeButtonFromTopPanel(container, button);
 }
 
 function validateActionPanelConfiguration(panelConfiguration) {
@@ -92,11 +92,11 @@ module.exports = {
     addAlertToTopPanel: addAlertToTopPanel,
     addButtonToBottomPanel: addButtonToBottomPanel,
     addButtonToTopPanel: addButtonToTopPanel,
-    clearAlerts: clearAlerts,
-    clearAlertFromBottomPanel: clearAlertFromBottomPanel,
-    clearAlertTopPanel: clearAlertTopPanel,
-    clearButtonBottomPanel: clearButtonBottomPanel,
-    clearButtonTopPanel: clearButtonTopPanel,
+    clearAlertsFromContainer: clearAlertsFromContainer,
+    clearAlertsFromBottomPanel: clearAlertsFromBottomPanel,
+    clearAlertsFromTopPanel: clearAlertsFromTopPanel,
+    clearButtonsFromBottomPanel: clearButtonsFromBottomPanel,
+    clearButtonsFromTopPanel: clearButtonsFromTopPanel,
     createActionPanelContainer: createActionPanelContainer,
     destroyActionPanelContainer: destroyActionPanelContainer,
     recreateActionPanel: recreateActionPanel,

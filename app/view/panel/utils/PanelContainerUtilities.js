@@ -4,19 +4,19 @@ var BODY_CONTENT_CONTAINER_SELECTOR = '.ui-body-content-container';
 var BUTTON_BOTTOM_CONTAINER_SELECTOR = '.ui-button-bottom-container';
 var BUTTON_TOP_CONTAINER_SELECTOR = '.ui-button-top-container';
 
-function addAlertToBottomContainer(panel, alert) {
+function addAlertToBottomPanel(panel, alert) {
     panel.querySelector(ALERT_BOTTOM_CONTAINER_SELECTOR).appendChild(alert);
 }
 
-function addAlertToTopContainer(panel, alert) {
+function addAlertToTopPanel(panel, alert) {
     panel.querySelector(ALERT_TOP_CONTAINER_SELECTOR).appendChild(alert);
 }
 
-function addButtonToBottomContainer(panel, button) {
+function addButtonToBottomPanel(panel, button) {
     panel.querySelector(BUTTON_BOTTOM_CONTAINER_SELECTOR).appendChild(button);
 }
 
-function addButtonToTopContainer(panel, button) {
+function addButtonToTopPanel(panel, button) {
     panel.querySelector(BUTTON_TOP_CONTAINER_SELECTOR).appendChild(button);
 }
 
@@ -30,39 +30,39 @@ function clearContainer(container) {
     }
 }
 
-function clearAlertBottomContainer(panel) {
+function clearAlertsFromBottomPanel(panel) {
     clearContainer(panel.querySelector(ALERT_BOTTOM_CONTAINER_SELECTOR));
 }
 
-function clearAlertTopContainer(panel) {
+function clearAlertsFromTopPanel(panel) {
     clearContainer(panel.querySelector(ALERT_TOP_CONTAINER_SELECTOR));
 }
 
-function clearButtonBottomContainer(panel) {
+function clearButtonsFromBottomPanel(panel) {
     clearContainer(panel.querySelector(BUTTON_BOTTOM_CONTAINER_SELECTOR));
 }
 
-function clearButtonTopContainer(panel) {
+function clearButtonsFromTopPanel(panel) {
     clearContainer(panel.querySelector(BUTTON_TOP_CONTAINER_SELECTOR));
 }
 
-function clearContentContainer(panel) {
+function clearContentFromContainer(panel) {
     clearContainer(panel.querySelector(BODY_CONTENT_CONTAINER_SELECTOR));
 }
 
-function removeAlertFromBottomContainer(panel, alert) {
+function removeAlertFromBottomPanel(panel, alert) {
     panel.querySelector(ALERT_BOTTOM_CONTAINER_SELECTOR).removeChild(alert);
 }
 
-function removeAlertFromTopContainer(panel, alert) {
+function removeAlertFromTopPanel(panel, alert) {
     panel.querySelector(ALERT_TOP_CONTAINER_SELECTOR).removeChild(alert);
 }
 
-function removeButtonFromBottomContainer(panel, button) {
+function removeButtonFromBottomPanel(panel, button) {
     panel.querySelector(BUTTON_BOTTOM_CONTAINER_SELECTOR).removeChild(button);
 }
 
-function removeButtonFromTopContainer(panel, button) {
+function removeButtonFromTopPanel(panel, button) {
     panel.querySelector(BUTTON_TOP_CONTAINER_SELECTOR).removeChild(button);
 }
 
@@ -74,19 +74,19 @@ function removeContentFromContainer(panel) {
 }
 
 module.exports = {
-    addAlertToBottomContainer: addAlertToBottomContainer,
-    addAlertToTopContainer: addAlertToTopContainer,
-    addButtonToBottomContainer: addButtonToBottomContainer,
-    addButtonToTopContainer: addButtonToTopContainer,
+    addAlertToBottomPanel: addAlertToBottomPanel,
+    addAlertToTopPanel: addAlertToTopPanel,
+    addButtonToBottomPanel: addButtonToBottomPanel,
+    addButtonToTopPanel: addButtonToTopPanel,
     addContentToContainer: addContentToContainer,
-    clearAlertBottomContainer: clearAlertBottomContainer,
-    clearAlertTopContainer: clearAlertTopContainer,
-    clearButtonBottomContainer: clearButtonBottomContainer,
-    clearButtonTopContainer: clearButtonTopContainer,
-    clearContentContainer: clearContentContainer,
-    removeAlertFromBottomContainer: removeAlertFromBottomContainer,
-    removeAlertFromTopContainer: removeAlertFromTopContainer,
-    removeButtonFromBottomContainer: removeButtonFromBottomContainer,
-    removeButtonFromTopContainer: removeButtonFromTopContainer,
+    clearAlertsFromBottomPanel: clearAlertsFromBottomPanel,
+    clearAlertsFromTopPanel: clearAlertsFromTopPanel,
+    clearButtonsFromBottomPanel: clearButtonsFromBottomPanel,
+    clearButtonsFromTopPanel: clearButtonsFromTopPanel,
+    clearContentFromContainer: clearContentFromContainer,
+    removeAlertFromBottomPanel: removeAlertFromBottomPanel,
+    removeAlertFromTopPanel: removeAlertFromTopPanel,
+    removeButtonFromBottomPanel: removeButtonFromBottomPanel,
+    removeButtonFromTopPanel: removeButtonFromTopPanel,
     removeContentFromContainer: removeContentFromContainer
 };

@@ -1,7 +1,7 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var IndexPageLogInPanel = require('../../../../app/content/index/IndexPagePanelFactory');
+var IndexPagePanelFactory = require('../../../../app/content/index/IndexPagePanelFactory');
 var View = require('../../../../app/view/PassiveViewAPI');
 
 describe('Index Page Panel Factory', function () {
@@ -42,6 +42,6 @@ describe('Index Page Panel Factory', function () {
             return 'Stubbed Log In Button';
         });
 
-        expect(IndexPageLogInPanel.createLogInPanel('Stubbed Log In Action Panel Configuration')).to.equal('Stubbed Log In Panel');
+        expect(IndexPagePanelFactory.createLogInPanel('Stubbed Log In Action Panel Configuration')).to.equal('Stubbed Log In Panel');
     });
 });

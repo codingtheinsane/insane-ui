@@ -16,7 +16,7 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(alert.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addAlertToBottomContainer(panel, alert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, alert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -26,7 +26,7 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedAlertTopContainerContent(alert.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addAlertToTopContainer(panel, alert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, alert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -36,7 +36,7 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(button.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addButtonToBottomContainer(panel, button);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, button);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -46,7 +46,7 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedButtonTopContainerContent(button.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addButtonToTopContainer(panel, button);
+        PanelContainerUtilities.addButtonToTopPanel(panel, button);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -75,11 +75,11 @@ describe('Panel Container Utilities', function () {
 
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addAlertToTopContainer(panel, topAlert);
-        PanelContainerUtilities.addButtonToTopContainer(panel, topButton);
+        PanelContainerUtilities.addAlertToTopPanel(panel, topAlert);
+        PanelContainerUtilities.addButtonToTopPanel(panel, topButton);
         PanelContainerUtilities.addContentToContainer(panel, content);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, bottomAlert);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, bottomButton);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, bottomAlert);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, bottomButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -90,8 +90,8 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addAlertToBottomContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -102,8 +102,8 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addAlertToBottomContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -114,8 +114,8 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(firstButton.outerHTML + secondButton.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addButtonToBottomContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -128,8 +128,8 @@ describe('Panel Container Utilities', function () {
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(firstButton.outerHTML + secondButton.outerHTML);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
 
-        PanelContainerUtilities.addButtonToBottomContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -149,10 +149,10 @@ describe('Panel Container Utilities', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var alert = ElementFactory.createElementWithId('div', 'top-alert');
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(alert.outerHTML);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, alert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, alert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearAlertBottomContainer(panel);
+        PanelContainerUtilities.clearAlertsFromBottomPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -160,10 +160,10 @@ describe('Panel Container Utilities', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var alert = ElementFactory.createElementWithId('div', 'top-alert');
         var EXPECTED_PANEL_CONTENT = createExpectedAlertTopContainerContent(alert.outerHTML);
-        PanelContainerUtilities.addAlertToTopContainer(panel, alert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, alert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearAlertTopContainer(panel);
+        PanelContainerUtilities.clearAlertsFromTopPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -171,10 +171,10 @@ describe('Panel Container Utilities', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var button = ElementFactory.createElementWithId('button', 'top-button');
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(button.outerHTML);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, button);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, button);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearButtonBottomContainer(panel);
+        PanelContainerUtilities.clearButtonsFromBottomPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -182,10 +182,10 @@ describe('Panel Container Utilities', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var button = ElementFactory.createElementWithId('button', 'bottom-button');
         var EXPECTED_PANEL_CONTENT = createExpectedButtonTopContainerContent(button.outerHTML);
-        PanelContainerUtilities.addButtonToTopContainer(panel, button);
+        PanelContainerUtilities.addButtonToTopPanel(panel, button);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearButtonTopContainer(panel);
+        PanelContainerUtilities.clearButtonsFromTopPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -196,7 +196,7 @@ describe('Panel Container Utilities', function () {
         PanelContainerUtilities.addContentToContainer(panel, content);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearContentContainer(panel);
+        PanelContainerUtilities.clearContentFromContainer(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -213,18 +213,18 @@ describe('Panel Container Utilities', function () {
             content.outerHTML,
             bottomAlert.outerHTML, bottomButton.outerHTML);
 
-        PanelContainerUtilities.addAlertToTopContainer(panel, topAlert);
-        PanelContainerUtilities.addButtonToTopContainer(panel, topButton);
+        PanelContainerUtilities.addAlertToTopPanel(panel, topAlert);
+        PanelContainerUtilities.addButtonToTopPanel(panel, topButton);
         PanelContainerUtilities.addContentToContainer(panel, content);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, bottomAlert);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, bottomButton);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, bottomAlert);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, bottomButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearAlertTopContainer(panel);
-        PanelContainerUtilities.clearButtonTopContainer(panel);
-        PanelContainerUtilities.clearContentContainer(panel);
-        PanelContainerUtilities.clearAlertBottomContainer(panel);
-        PanelContainerUtilities.clearButtonBottomContainer(panel);
+        PanelContainerUtilities.clearAlertsFromTopPanel(panel);
+        PanelContainerUtilities.clearButtonsFromTopPanel(panel);
+        PanelContainerUtilities.clearContentFromContainer(panel);
+        PanelContainerUtilities.clearAlertsFromBottomPanel(panel);
+        PanelContainerUtilities.clearButtonsFromBottomPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -233,11 +233,11 @@ describe('Panel Container Utilities', function () {
         var firstAlert = ElementFactory.createElementWithId('div', 'first-alert');
         var secondAlert = ElementFactory.createElementWithId('div', 'second-alert');
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearAlertBottomContainer(panel);
+        PanelContainerUtilities.clearAlertsFromBottomPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -246,11 +246,11 @@ describe('Panel Container Utilities', function () {
         var firstAlert = ElementFactory.createElementWithId('div', 'first-alert');
         var secondAlert = ElementFactory.createElementWithId('div', 'second-alert');
         var EXPECTED_PANEL_CONTENT = createExpectedAlertTopContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
-        PanelContainerUtilities.addAlertToTopContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToTopContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearAlertTopContainer(panel);
+        PanelContainerUtilities.clearAlertsFromTopPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -259,11 +259,11 @@ describe('Panel Container Utilities', function () {
         var firstButton = ElementFactory.createElementWithId('button', 'first-button');
         var secondButton = ElementFactory.createElementWithId('button', 'second-button');
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(firstButton.outerHTML + secondButton.outerHTML);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearButtonBottomContainer(panel);
+        PanelContainerUtilities.clearButtonsFromBottomPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -272,11 +272,11 @@ describe('Panel Container Utilities', function () {
         var firstButton = ElementFactory.createElementWithId('button', 'first-button');
         var secondButton = ElementFactory.createElementWithId('button', 'second-button');
         var EXPECTED_PANEL_CONTENT = createExpectedButtonTopContainerContent(firstButton.outerHTML + secondButton.outerHTML);
-        PanelContainerUtilities.addButtonToTopContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToTopContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToTopPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToTopPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearButtonTopContainer(panel);
+        PanelContainerUtilities.clearButtonsFromTopPanel(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -289,7 +289,7 @@ describe('Panel Container Utilities', function () {
         PanelContainerUtilities.addContentToContainer(panel, someOtherContent);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
 
-        PanelContainerUtilities.clearContentContainer(panel);
+        PanelContainerUtilities.clearContentFromContainer(panel);
         expect(panel.outerHTML).to.equal(DEFAULT_PANEL_CONTENT);
     });
 
@@ -299,11 +299,11 @@ describe('Panel Container Utilities', function () {
         var secondAlert = ElementFactory.createElementWithId('div', 'second-alert');
         var EXPECTED_INITIAL_PANEL_CONTENT = createExpectedAlertBottomContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
         var EXPECTED_PANEL_CONTENT = createExpectedAlertBottomContainerContent(secondAlert.outerHTML);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToBottomContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToBottomPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_INITIAL_PANEL_CONTENT);
 
-        PanelContainerUtilities.removeAlertFromBottomContainer(panel, firstAlert);
+        PanelContainerUtilities.removeAlertFromBottomPanel(panel, firstAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -313,11 +313,11 @@ describe('Panel Container Utilities', function () {
         var secondAlert = ElementFactory.createElementWithId('div', 'second-alert');
         var EXPECTED_INITIAL_PANEL_CONTENT = createExpectedAlertTopContainerContent(firstAlert.outerHTML + secondAlert.outerHTML);
         var EXPECTED_PANEL_CONTENT = createExpectedAlertTopContainerContent(secondAlert.outerHTML);
-        PanelContainerUtilities.addAlertToTopContainer(panel, firstAlert);
-        PanelContainerUtilities.addAlertToTopContainer(panel, secondAlert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, firstAlert);
+        PanelContainerUtilities.addAlertToTopPanel(panel, secondAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_INITIAL_PANEL_CONTENT);
 
-        PanelContainerUtilities.removeAlertFromTopContainer(panel, firstAlert);
+        PanelContainerUtilities.removeAlertFromTopPanel(panel, firstAlert);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -327,11 +327,11 @@ describe('Panel Container Utilities', function () {
         var secondButton = ElementFactory.createElementWithId('button', 'second-button');
         var EXPECTED_INITIAL_PANEL_CONTENT = createExpectedButtonBottomContainerContent(firstButton.outerHTML + secondButton.outerHTML);
         var EXPECTED_PANEL_CONTENT = createExpectedButtonBottomContainerContent(secondButton.outerHTML);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToBottomContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToBottomPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_INITIAL_PANEL_CONTENT);
 
-        PanelContainerUtilities.removeButtonFromBottomContainer(panel, firstButton);
+        PanelContainerUtilities.removeButtonFromBottomPanel(panel, firstButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
@@ -341,11 +341,11 @@ describe('Panel Container Utilities', function () {
         var secondButton = ElementFactory.createElementWithId('button', 'second-button');
         var EXPECTED_INITIAL_PANEL_CONTENT = createExpectedButtonTopContainerContent(firstButton.outerHTML + secondButton.outerHTML);
         var EXPECTED_PANEL_CONTENT = createExpectedButtonTopContainerContent(secondButton.outerHTML);
-        PanelContainerUtilities.addButtonToTopContainer(panel, firstButton);
-        PanelContainerUtilities.addButtonToTopContainer(panel, secondButton);
+        PanelContainerUtilities.addButtonToTopPanel(panel, firstButton);
+        PanelContainerUtilities.addButtonToTopPanel(panel, secondButton);
         expect(panel.outerHTML).to.equal(EXPECTED_INITIAL_PANEL_CONTENT);
 
-        PanelContainerUtilities.removeButtonFromTopContainer(panel, firstButton);
+        PanelContainerUtilities.removeButtonFromTopPanel(panel, firstButton);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 

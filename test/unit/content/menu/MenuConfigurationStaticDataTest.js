@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var _ = require('underscore');
-var MenuConfiguration = require('../../../../app/content/menu/MenuConfiguration');
+var MenuConfigurationStaticData = require('../../../../app/content/menu/MenuConfigurationStaticData');
 
 describe('Menu Configuration', function () {
 
@@ -100,8 +100,8 @@ describe('Menu Configuration', function () {
 
     function getAllSubMenuItems() {
         var menuItems = [];
-        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.left));
-        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfiguration.right));
+        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfigurationStaticData.left));
+        menuItems = menuItems.concat(getAllSubMenuItemsFromMenu(MenuConfigurationStaticData.right));
         return menuItems;
     }
 
@@ -126,8 +126,8 @@ describe('Menu Configuration', function () {
 
     function getAllMenuItems() {
         var menuItems = [];
-        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.left));
-        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfiguration.right));
+        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfigurationStaticData.left));
+        menuItems = menuItems.concat(getAllMenuItemsFromMenu(MenuConfigurationStaticData.right));
         return menuItems;
     }
 

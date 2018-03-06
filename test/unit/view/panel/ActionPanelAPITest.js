@@ -24,7 +24,7 @@ describe('Action Panel API', function () {
     });
 
     it('should add alert to bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'addAlertToBottomContainer').callsFake(function (container, alert) {
+        sandbox.stub(PanelContainerUtilities, 'addAlertToBottomPanel').callsFake(function (container, alert) {
             expect(container).to.equal('Action Panel Container');
             expect(alert).to.equal('Alert');
             done();
@@ -33,7 +33,7 @@ describe('Action Panel API', function () {
     });
 
     it('should add alert to top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'addAlertToTopContainer').callsFake(function (container, alert) {
+        sandbox.stub(PanelContainerUtilities, 'addAlertToTopPanel').callsFake(function (container, alert) {
             expect(container).to.equal('Action Panel Container');
             expect(alert).to.equal('Alert');
             done();
@@ -42,7 +42,7 @@ describe('Action Panel API', function () {
     });
 
     it('should add button to bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'addButtonToBottomContainer').callsFake(function (container, button) {
+        sandbox.stub(PanelContainerUtilities, 'addButtonToBottomPanel').callsFake(function (container, button) {
             expect(container).to.equal('Action Panel Container');
             expect(button).to.equal('Button');
             done();
@@ -51,7 +51,7 @@ describe('Action Panel API', function () {
     });
 
     it('should add button to top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'addButtonToTopContainer').callsFake(function (container, button) {
+        sandbox.stub(PanelContainerUtilities, 'addButtonToTopPanel').callsFake(function (container, button) {
             expect(container).to.equal('Action Panel Container');
             expect(button).to.equal('Button');
             done();
@@ -60,46 +60,46 @@ describe('Action Panel API', function () {
     });
 
     it('should clear bottom panel alerts', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearAlertTopContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearAlertsFromTopPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
         });
-        sandbox.stub(PanelContainerUtilities, 'clearAlertBottomContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearAlertsFromBottomPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlerts('Action Panel Container');
+        ActionPanel.clearAlertsFromContainer('Action Panel Container');
     });
 
     it('should clear bottom panel alerts', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearAlertBottomContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearAlertsFromBottomPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlertFromBottomPanel('Action Panel Container');
+        ActionPanel.clearAlertsFromBottomPanel('Action Panel Container');
     });
 
     it('should clear top panel alerts', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearAlertTopContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearAlertsFromTopPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlertTopPanel('Action Panel Container');
+        ActionPanel.clearAlertsFromTopPanel('Action Panel Container');
     });
 
     it('should clear bottom panel buttons', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearButtonBottomContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearButtonsFromBottomPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearButtonBottomPanel('Action Panel Container');
+        ActionPanel.clearButtonsFromBottomPanel('Action Panel Container');
     });
 
     it('should clear top panel buttons', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearButtonTopContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearButtonsFromTopPanel').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearButtonTopPanel('Action Panel Container');
+        ActionPanel.clearButtonsFromTopPanel('Action Panel Container');
     });
 
     it('should create action panel container', function () {
@@ -157,7 +157,7 @@ describe('Action Panel API', function () {
     });
 
     it('should remove alert from bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeAlertFromBottomContainer').callsFake(function (container, alert) {
+        sandbox.stub(PanelContainerUtilities, 'removeAlertFromBottomPanel').callsFake(function (container, alert) {
             expect(container).to.equal('Action Panel Container');
             expect(alert).to.equal('Alert');
             done();
@@ -166,7 +166,7 @@ describe('Action Panel API', function () {
     });
 
     it('should remove alert from top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeAlertFromTopContainer').callsFake(function (container, alert) {
+        sandbox.stub(PanelContainerUtilities, 'removeAlertFromTopPanel').callsFake(function (container, alert) {
             expect(container).to.equal('Action Panel Container');
             expect(alert).to.equal('Alert');
             done();
@@ -175,7 +175,7 @@ describe('Action Panel API', function () {
     });
 
     it('should remove button from bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeButtonFromBottomContainer').callsFake(function (container, button) {
+        sandbox.stub(PanelContainerUtilities, 'removeButtonFromBottomPanel').callsFake(function (container, button) {
             expect(container).to.equal('Action Panel Container');
             expect(button).to.equal('Button');
             done();
@@ -184,7 +184,7 @@ describe('Action Panel API', function () {
     });
 
     it('should remove button from top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeButtonFromTopContainer').callsFake(function (container, button) {
+        sandbox.stub(PanelContainerUtilities, 'removeButtonFromTopPanel').callsFake(function (container, button) {
             expect(container).to.equal('Action Panel Container');
             expect(button).to.equal('Button');
             done();

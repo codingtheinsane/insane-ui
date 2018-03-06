@@ -19,13 +19,16 @@ describe('Index Page Log In Panel', function () {
     });
 
     it('should create log in panel with log in action panel configuration and append it to container', function () {
-        sandbox.stub(View.panel.Utilities);
+        sandbox.stub(View.panel.ActionPanel, 'addButtonToBottomPanel').callsFake(function(container, button) {
+            expect(container).to.equal('Stubbed Log In Panel');
+            expect(button).to.equal('Stubbed Log In Button');
+        });
 
         sandbox.stub(View.element.GlyphIcon, 'USER').callsFake(function () {
             return 'User Glyph Icon';
         });
 
-        sandbox.stub(View.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
+        sandbox.stub(View.panel.ActionPanel, 'createActionPanelContainer').callsFake(function (id, title, config) {
             expect(id).to.equal('content-index-login-panel');
             expect(title).to.equal('Login Panel');
             expect(config).to.equal('Stubbed Log In Action Panel Configuration');

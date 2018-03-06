@@ -13,13 +13,16 @@ describe('Action Panel Page Initial Action Panel', function () {
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
 
-        sandbox.stub(View.panel.Utilities);
+        sandbox.stub(View.panel.ActionPanel, 'addButtonToBottomPanel').callsFake(function(container, button) {
+            expect(container).to.equal('Stubbed Initial Panel');
+            expect(button).to.equal('Stubbed Initial Button');
+        });
 
         sandbox.stub(View.element.GlyphIcon, 'USER').callsFake(function () {
             return 'User Glyph Icon';
         });
 
-        sandbox.stub(View.panel.ActionPanel, 'createActionPanel').callsFake(function (id, title, config) {
+        sandbox.stub(View.panel.ActionPanel, 'createActionPanelContainer').callsFake(function (id, title, config) {
             expect(id).to.equal('content-action-initial-panel');
             expect(title).to.equal('Initial Action Panel');
             expect(config).to.equal('Stubbed Initial Action Panel Configuration');

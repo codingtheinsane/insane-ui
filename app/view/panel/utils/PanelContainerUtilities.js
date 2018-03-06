@@ -66,8 +66,11 @@ function removeButtonFromTopContainer(panel, button) {
     panel.querySelector(BUTTON_TOP_CONTAINER_SELECTOR).removeChild(button);
 }
 
-function removeContentFromContainer(panel, content) {
-    panel.querySelector(BODY_CONTENT_CONTAINER_SELECTOR).removeChild(content);
+function removeContentFromContainer(panel) {
+    var content = panel.querySelector(BODY_CONTENT_CONTAINER_SELECTOR);
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
+    }
 }
 
 module.exports = {

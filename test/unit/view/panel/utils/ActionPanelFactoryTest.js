@@ -10,27 +10,6 @@ describe('Action Panel Factory', function () {
 
     var sandbox;
 
-    function createStubbedFormGroup(id) {
-        var formGroup = document.createElement('div');
-        formGroup.id = id;
-        return formGroup;
-    }
-
-    function createExpectedActionPanelWithContent(content) {
-        return '<div id="panel-id" class="panel panel-default">'
-            + '<div id="panel-id-heading" class="panel-heading">Panel Title</div>'
-            + '<div id="panel-id-body" class="panel-body">'
-            + '<div id="panel-id-alert-top-container" class="ui-alert-top-container"></div>'
-            + '<div id="panel-id-button-top-container" class="ui-button-top-container"></div>'
-            + '<div id="panel-id-body-content" class="ui-body-content-container">'
-            + '<form id="panel-id-form" class="form-horizontal">'
-            + content
-            + '</form></div>'
-            + '<div id="panel-id-alert-bottom-container" class="ui-alert-bottom-container"></div>'
-            + '<div id="panel-id-button-bottom-container" class="ui-button-bottom-container"></div>'
-            + '</div></div>';
-    }
-
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
     });
@@ -46,7 +25,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-boolean-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'boolean-id',
             'label': 'Boolean Label',
             'type': 'boolean'
@@ -64,7 +43,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-date-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'date-id',
             'label': 'Date Label',
             'type': 'date'
@@ -82,7 +61,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-datetime-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'datetime-id',
             'label': 'Datetime Label',
             'type': 'datetime'
@@ -100,7 +79,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-decimal-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'decimal-id',
             'label': 'Decimal Label',
             'type': 'decimal'
@@ -118,7 +97,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-integer-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'integer-id',
             'label': 'Integer Label',
             'type': 'integer'
@@ -136,7 +115,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-text-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'text-id',
             'label': 'Text Label',
             'type': 'text'
@@ -154,7 +133,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-password-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'password-id',
             'label': 'Password Label',
             'type': 'password'
@@ -176,7 +155,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-single-selection-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'single-selection-id',
             'label': 'Single Selection Label',
             'type': 'single-selection',
@@ -202,7 +181,7 @@ describe('Action Panel Factory', function () {
             return createStubbedFormGroup('stubbed-multiple-selection-form-group');
         });
 
-        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [{
+        var actionPanel = ActionPanelFactory.createActionPanel('panel-id', [{
             'id': 'multiple-selection-id',
             'label': 'Multiple Selection Label',
             'type': 'multiple-selection',
@@ -240,14 +219,26 @@ describe('Action Panel Factory', function () {
             'type': 'date'
         };
 
-        var actionPanelWithMultipleFormGroups = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [textConfigurationItem, dateConfigurationItem]);
+        var actionPanelWithMultipleFormGroups = ActionPanelFactory.createActionPanel('panel-id', [textConfigurationItem, dateConfigurationItem]);
         expect(actionPanelWithMultipleFormGroups.outerHTML).to.equal(createExpectedActionPanelWithContent(
             '<div id="stubbed-text-form-group"></div><div id="stubbed-date-form-group"></div>'
         ));
 
-        var actionPanelWithMultipleFormGroupsInOppositeOrder = ActionPanelFactory.createActionPanel('panel-id', 'Panel Title', [dateConfigurationItem, textConfigurationItem]);
+        var actionPanelWithMultipleFormGroupsInOppositeOrder = ActionPanelFactory.createActionPanel('panel-id', [dateConfigurationItem, textConfigurationItem]);
         expect(actionPanelWithMultipleFormGroupsInOppositeOrder.outerHTML).to.equal(createExpectedActionPanelWithContent(
             '<div id="stubbed-date-form-group"></div><div id="stubbed-text-form-group"></div>'
         ));
     });
+
+    function createStubbedFormGroup(id) {
+        var formGroup = document.createElement('div');
+        formGroup.id = id;
+        return formGroup;
+    }
+
+    function createExpectedActionPanelWithContent(content) {
+        return '<form id="panel-id-form" class="form-horizontal">'
+            + content
+            + '</form>';
+    }
 });

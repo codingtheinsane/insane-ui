@@ -349,17 +349,17 @@ describe('Panel Container Utilities', function () {
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 
-    it('should remove specific content from container', function () {
+    it('should remove all content from container', function () {
         var panel = PanelContainerFactory.createPanel('panel-id', 'Panel Title');
         var someContent = ElementFactory.createElementWithId('div', 'some-content');
         var someOtherContent = ElementFactory.createElementWithId('div', 'some-other-content');
         var EXPECTED_INITIAL_PANEL_CONTENT = createExpectedBodyContainerContent(someContent.outerHTML + someOtherContent.outerHTML);
-        var EXPECTED_PANEL_CONTENT = createExpectedBodyContainerContent(someOtherContent.outerHTML);
+        var EXPECTED_PANEL_CONTENT = createExpectedBodyContainerContent('');
         PanelContainerUtilities.addContentToContainer(panel, someContent);
         PanelContainerUtilities.addContentToContainer(panel, someOtherContent);
         expect(panel.outerHTML).to.equal(EXPECTED_INITIAL_PANEL_CONTENT);
 
-        PanelContainerUtilities.removeContentFromContainer(panel, someContent);
+        PanelContainerUtilities.removeContentFromContainer(panel);
         expect(panel.outerHTML).to.equal(EXPECTED_PANEL_CONTENT);
     });
 

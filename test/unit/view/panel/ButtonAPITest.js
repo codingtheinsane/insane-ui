@@ -2,6 +2,7 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 var ButtonAPI = require('../../../../app/view/panel/ButtonAPI');
 var ButtonFactory = require('../../../../app/view/panel/utils/element/ButtonFactory');
+var ButtonUtilities = require('../../../../app/view/panel/utils/element/ButtonUtilities');
 var ElementDestructor = require('../../../../app/view/panel/utils/element/ElementDestructor');
 
 describe('Button API', function () {
@@ -140,6 +141,22 @@ describe('Button API', function () {
             return 'button';
         });
         expect(ButtonAPI.createDangerButtonWithGlyphIcon('id', 'glyphIcon', 'button text', 'callback')).to.equal('button');
+    });
+
+    it('should disable button', function (done) {
+        sandbox.stub(ButtonUtilities, 'disableButton').callsFake(function (button) {
+            expect(button).to.equal('button');
+            done();
+        });
+        ButtonAPI.disableButton('button');
+    });
+
+    it('should enable button', function (done) {
+        sandbox.stub(ButtonUtilities, 'enableButton').callsFake(function (button) {
+            expect(button).to.equal('button');
+            done();
+        });
+        ButtonAPI.enableButton('button');
     });
 
     it('should remove button', function (done) {

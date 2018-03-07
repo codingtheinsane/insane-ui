@@ -1,4 +1,5 @@
 var ButtonFactory = require('./utils/element/ButtonFactory');
+var ButtonUtilities = require('./utils/element/ButtonUtilities');
 var ElementDestructor = require('./utils/element/ElementDestructor');
 
 function createButton(buttonId, buttonText, buttonOnClickCallBack) {
@@ -49,6 +50,14 @@ function createDangerButtonWithGlyphIcon(buttonId, glyphIcon, buttonText, button
     return ButtonFactory.createDangerButtonWithGlyphIcon(buttonId, glyphIcon, buttonText, buttonOnClickCallBack);
 }
 
+function disableButton(button) {
+    ButtonUtilities.disableButton(button);
+}
+
+function enableButton(button) {
+    ButtonUtilities.enableButton(button);
+}
+
 function removeButton(button) {
     ElementDestructor.destructElement(button);
 }
@@ -66,5 +75,7 @@ module.exports = {
     createInfoButtonWithGlyphIcon: createInfoButtonWithGlyphIcon,
     createWarningButtonWithGlyphIcon: createWarningButtonWithGlyphIcon,
     createDangerButtonWithGlyphIcon: createDangerButtonWithGlyphIcon,
+    disableButton: disableButton,
+    enableButton: enableButton,
     removeButton: removeButton
 };

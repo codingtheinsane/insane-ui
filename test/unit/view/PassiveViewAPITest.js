@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
 var PassiveViewAPI = require('../../../app/view/PassiveViewAPI');
 var ActionPanelAPI = require('../../../app/view/panel/ActionPanelAPI');
+var AlertAPI = require('../../../app/view/panel/AlertAPI');
+var ButtonAPI = require('../../../app/view/panel/ButtonAPI');
+var GlyphIconAPI = require('../../../app/view/panel/GlyphIconAPI');
 var MenuPanelAPI = require('../../../app/view/panel/MenuPanelAPI');
-var AlertFactory = require('../../../app/view/panel/utils/element/AlertFactory');
-var ButtonFactory = require('../../../app/view/panel/utils/element/ButtonFactory');
-var GlyphIconFactory = require('../../../app/view/panel/utils/element/GlyphIconFactory');
 
 describe('Passive View API', function () {
 
@@ -17,14 +17,14 @@ describe('Passive View API', function () {
     });
 
     it('should provide access to Alert Factory', function () {
-        expect(PassiveViewAPI.element.Alert).to.equal(AlertFactory);
+        expect(PassiveViewAPI.element.Alert).to.equal(AlertAPI);
     });
 
     it('should provide access to Button Factory', function () {
-        expect(PassiveViewAPI.element.Button).to.equal(ButtonFactory);
+        expect(PassiveViewAPI.element.Button).to.equal(ButtonAPI);
     });
 
     it('should provide access to Glyph Icon Factory', function () {
-        expect(PassiveViewAPI.element.GlyphIcon).to.equal(GlyphIconFactory);
+        expect(PassiveViewAPI.element.GlyphIcon).to.equal(GlyphIconAPI);
     });
 });

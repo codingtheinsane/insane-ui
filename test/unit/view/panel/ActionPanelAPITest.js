@@ -156,42 +156,6 @@ describe('Action Panel API', function () {
         ActionPanel.removeActionPanel('Action Panel Container');
     });
 
-    it('should remove alert from bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeAlertFromBottomPanel').callsFake(function (container, alert) {
-            expect(container).to.equal('Action Panel Container');
-            expect(alert).to.equal('Alert');
-            done();
-        });
-        ActionPanel.removeAlertFromBottomPanel('Action Panel Container', 'Alert');
-    });
-
-    it('should remove alert from top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeAlertFromTopPanel').callsFake(function (container, alert) {
-            expect(container).to.equal('Action Panel Container');
-            expect(alert).to.equal('Alert');
-            done();
-        });
-        ActionPanel.removeAlertFromTopPanel('Action Panel Container', 'Alert');
-    });
-
-    it('should remove button from bottom panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeButtonFromBottomPanel').callsFake(function (container, button) {
-            expect(container).to.equal('Action Panel Container');
-            expect(button).to.equal('Button');
-            done();
-        });
-        ActionPanel.removeButtonFromBottomPanel('Action Panel Container', 'Button');
-    });
-
-    it('should remove button from top panel', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeButtonFromTopPanel').callsFake(function (container, button) {
-            expect(container).to.equal('Action Panel Container');
-            expect(button).to.equal('Button');
-            done();
-        });
-        ActionPanel.removeButtonFromTopPanel('Action Panel Container', 'Button');
-    });
-
     it('should validate panel configuration', function () {
         sandbox.stub(ActionPanelConfigurationValidator, 'validateConfiguration').callsFake(function (panelConfiguration) {
             expect(panelConfiguration).to.equal('Stubbed Panel Configuration');

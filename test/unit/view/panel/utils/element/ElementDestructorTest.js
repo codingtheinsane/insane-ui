@@ -32,4 +32,18 @@ describe('Element Factory', function () {
 
         expect(container.innerHTML).to.equal(secondElement.outerHTML);
     });
+
+    it('should not destruct an element without a parent', function () {
+        var element = ElementFactory.createElementWithId('div', 'element');
+        ElementDestructor.destructElement(element);
+        expect(element).to.not.be.null;
+    });
+
+    it('should not destruct undefined element', function () {
+        ElementDestructor.destructElement(undefined);
+    });
+
+    it('should not destruct null element', function () {
+        ElementDestructor.destructElement(null);
+    });
 });

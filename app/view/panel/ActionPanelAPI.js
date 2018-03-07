@@ -63,22 +63,6 @@ function removeActionPanel(container) {
     PanelContainerUtilities.removeContentFromContainer(container);
 }
 
-function removeAlertFromBottomPanel(container, alert) {
-    PanelContainerUtilities.removeAlertFromBottomPanel(container, alert);
-}
-
-function removeAlertFromTopPanel(container, alert) {
-    PanelContainerUtilities.removeAlertFromTopPanel(container, alert);
-}
-
-function removeButtonFromBottomPanel(container, button) {
-    PanelContainerUtilities.removeButtonFromBottomPanel(container, button);
-}
-
-function removeButtonFromTopPanel(container, button) {
-    PanelContainerUtilities.removeButtonFromTopPanel(container, button);
-}
-
 function validateActionPanelConfiguration(panelConfiguration) {
     return ActionPanelConfigurationValidator.validateConfiguration(panelConfiguration);
 }
@@ -101,10 +85,6 @@ module.exports = {
     destroyActionPanelContainer: destroyActionPanelContainer,
     recreateActionPanel: recreateActionPanel,
     removeActionPanel: removeActionPanel,
-    removeAlertFromBottomPanel: removeAlertFromBottomPanel,
-    removeAlertFromTopPanel: removeAlertFromTopPanel,
-    removeButtonFromBottomPanel: removeButtonFromBottomPanel,
-    removeButtonFromTopPanel: removeButtonFromTopPanel,
     retrieveActionPanelData: retrieveActionPanelData,
     validateActionPanelConfiguration: validateActionPanelConfiguration
 };

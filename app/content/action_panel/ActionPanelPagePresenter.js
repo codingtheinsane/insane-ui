@@ -2,8 +2,7 @@ var ActionPanelPageModel = require('./ActionPanelPageModel');
 var ActionPanelPagePanelFactory = require('./ActionPanelPagePanelFactory');
 
 function run(container) {
-    var initialActionPanelConfiguration = ActionPanelPageModel.getInitialActionPanelConfiguration();
-    var initialActionPanel = ActionPanelPagePanelFactory.createInitialActionPanel(initialActionPanelConfiguration);
+    var initialActionPanel = ActionPanelPagePanelFactory.createInitialActionPanel(ActionPanelPageModel.getInitialActionPanelConfiguration);
     container.appendChild(initialActionPanel);
 }
 

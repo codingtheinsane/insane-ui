@@ -13,7 +13,7 @@ describe('Action Panel Page Panel Factory', function () {
     beforeEach(function () {
         sandbox = sinon.sandbox.create();
 
-        sandbox.stub(View.panel.ActionPanel, 'addButtonToBottomPanel').callsFake(function(container, button) {
+        sandbox.stub(View.panel.ActionPanel, 'addButtonToBottomPanel').callsFake(function (container, button) {
             expect(container).to.equal('Stubbed Initial Panel');
             expect(button).to.equal('Stubbed Initial Button');
         });
@@ -22,10 +22,10 @@ describe('Action Panel Page Panel Factory', function () {
             return 'User Glyph Icon';
         });
 
-        sandbox.stub(View.panel.ActionPanel, 'createActionPanelContainer').callsFake(function (id, title, config) {
+        sandbox.stub(View.panel.ActionPanel, 'createActionPanelContainer').callsFake(function (id, title, configCallback) {
             expect(id).to.equal('content-action-initial-panel');
             expect(title).to.equal('Initial Action Panel');
-            expect(config).to.equal('Stubbed Initial Action Panel Configuration');
+            //TODO: Cannot assert on configuration call back since now it is an inner function. Investigation required
             return 'Stubbed Initial Panel';
         });
     });
@@ -42,7 +42,9 @@ describe('Action Panel Page Panel Factory', function () {
             return 'Stubbed Initial Button';
         });
 
-        expect(ActionPanelPagePanelFactory.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+        expect(ActionPanelPagePanelFactory.createInitialActionPanel(function () {
+            return 'Stubbed Initial Action Panel Configuration';
+        })).to.equal('Stubbed Initial Panel');
     });
 
     it('should bind callback to submit button when creating panel', function (done) {
@@ -62,7 +64,9 @@ describe('Action Panel Page Panel Factory', function () {
             done();
         });
 
-        expect(ActionPanelPagePanelFactory.createInitialActionPanel('Stubbed Initial Action Panel Configuration')).to.equal('Stubbed Initial Panel');
+        expect(ActionPanelPagePanelFactory.createInitialActionPanel(function () {
+            return 'Stubbed Initial Action Panel Configuration';
+        })).to.equal('Stubbed Initial Panel');
         buttonCallback();
     });
 });

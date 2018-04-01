@@ -1,7 +1,9 @@
 var ActionPanelConfigurationValidator = require('./utils/ActionPanelConfigurationValidator');
 var ActionPanelDataRetriever = require('./utils/ActionPanelDataRetriever');
 var ActionPanelFactory = require('./utils/ActionPanelFactory');
+var AlertAPI = require('./AlertAPI');
 var ElementDestructor = require('./utils/element/ElementDestructor');
+var LoadingPanelFactory = require('./utils/LoadingPanelFactory');
 var PanelContainerFactory = require('./utils/PanelContainerFactory');
 var PanelContainerUtilities = require('./utils/PanelContainerUtilities');
 
@@ -42,11 +44,19 @@ function clearButtonsFromTopPanel(container) {
     PanelContainerUtilities.clearButtonsFromTopPanel(container);
 }
 
-function createActionPanelContainer(panelId, panelTitle, panelConfiguration) {
-    var actionPanel = ActionPanelFactory.createActionPanel(panelId, panelConfiguration);
-    var actionPanelContainer = PanelContainerFactory.createPanel(panelId, panelTitle);
-    PanelContainerUtilities.addContentToContainer(actionPanelContainer, actionPanel);
-    return actionPanelContainer;
+function createActionPanelContainer(panelId, panelTitle, panelConfigurationCallback) {
+    var loadingPanel = LoadingPanelFactory.createLoadingPanel(panelId + '-loading-panel');
+    var container = PanelContainerFactory.createPanel(panelId, panelTitle);
+    PanelContainerUtilities.addContentToContainer(container, loadingPanel);
+    panelConfigurationCallback(function (panelConfiguration) {
+        var actionPanel = ActionPanelFactory.createActionPanel(panelId, panelConfiguration);
+        PanelContainerUtilities.removeContentFromContainer(container);
+        PanelContainerUtilities.addContentToContainer(container, actionPanel);
+    }, function (errorAlertText) {
+        var errorAlert = AlertAPI.createDangerAlert(panelId + '-loading-failed-alert', errorAlertText, 60);
+        PanelContainerUtilities.addAlertToTopPanel(container, errorAlert);
+    });
+    return container;
 }
 
 function destroyActionPanelContainer(container) {

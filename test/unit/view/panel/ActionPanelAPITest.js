@@ -1,11 +1,13 @@
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var ActionPanel = require('../../../../app/view/panel/ActionPanelAPI');
+var AlertAPI = require('../../../../app/view/panel/AlertAPI');
+var ActionPanelAPI = require('../../../../app/view/panel/ActionPanelAPI');
 var ActionPanelConfigurationValidator = require('../../../../app/view/panel/utils/ActionPanelConfigurationValidator');
 var ActionPanelDataRetriever = require('../../../../app/view/panel/utils/ActionPanelDataRetriever');
 var ActionPanelFactory = require('../../../../app/view/panel/utils/ActionPanelFactory');
 var ElementDestructor = require('../../../../app/view/panel/utils/element/ElementDestructor');
+var LoadingPanelFactory = require('../../../../app/view/panel/utils/LoadingPanelFactory');
 var PanelContainerFactory = require('../../../../app/view/panel/utils/PanelContainerFactory');
 var PanelContainerUtilities = require('../../../../app/view/panel/utils/PanelContainerUtilities');
 
@@ -29,7 +31,7 @@ describe('Action Panel API', function () {
             expect(alert).to.equal('Alert');
             done();
         });
-        ActionPanel.addAlertToBottomPanel('Action Panel Container', 'Alert');
+        ActionPanelAPI.addAlertToBottomPanel('Action Panel Container', 'Alert');
     });
 
     it('should add alert to top panel', function (done) {
@@ -38,7 +40,7 @@ describe('Action Panel API', function () {
             expect(alert).to.equal('Alert');
             done();
         });
-        ActionPanel.addAlertToTopPanel('Action Panel Container', 'Alert');
+        ActionPanelAPI.addAlertToTopPanel('Action Panel Container', 'Alert');
     });
 
     it('should add button to bottom panel', function (done) {
@@ -47,7 +49,7 @@ describe('Action Panel API', function () {
             expect(button).to.equal('Button');
             done();
         });
-        ActionPanel.addButtonToBottomPanel('Action Panel Container', 'Button');
+        ActionPanelAPI.addButtonToBottomPanel('Action Panel Container', 'Button');
     });
 
     it('should add button to top panel', function (done) {
@@ -56,7 +58,7 @@ describe('Action Panel API', function () {
             expect(button).to.equal('Button');
             done();
         });
-        ActionPanel.addButtonToTopPanel('Action Panel Container', 'Button');
+        ActionPanelAPI.addButtonToTopPanel('Action Panel Container', 'Button');
     });
 
     it('should clear bottom panel alerts', function (done) {
@@ -67,7 +69,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlertsFromContainer('Action Panel Container');
+        ActionPanelAPI.clearAlertsFromContainer('Action Panel Container');
     });
 
     it('should clear bottom panel alerts', function (done) {
@@ -75,7 +77,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlertsFromBottomPanel('Action Panel Container');
+        ActionPanelAPI.clearAlertsFromBottomPanel('Action Panel Container');
     });
 
     it('should clear top panel alerts', function (done) {
@@ -83,7 +85,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearAlertsFromTopPanel('Action Panel Container');
+        ActionPanelAPI.clearAlertsFromTopPanel('Action Panel Container');
     });
 
     it('should clear bottom panel buttons', function (done) {
@@ -91,7 +93,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearButtonsFromBottomPanel('Action Panel Container');
+        ActionPanelAPI.clearButtonsFromBottomPanel('Action Panel Container');
     });
 
     it('should clear top panel buttons', function (done) {
@@ -99,25 +101,84 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.clearButtonsFromTopPanel('Action Panel Container');
+        ActionPanelAPI.clearButtonsFromTopPanel('Action Panel Container');
     });
 
-    it('should create action panel container', function () {
+    it('should create action panel container', function (done) {
+        sandbox.stub(LoadingPanelFactory, 'createLoadingPanel').callsFake(function (id) {
+            expect(id).to.equal('container-id-loading-panel');
+            return 'Stubbed Loading Panel';
+        });
+
+        sandbox.stub(PanelContainerFactory, 'createPanel').callsFake(function (id, title) {
+            expect(id).to.equal('container-id');
+            expect(title).to.equal('title');
+            return 'Stubbed Container';
+        });
+
         sandbox.stub(ActionPanelFactory, 'createActionPanel').callsFake(function (id, configuration) {
-            expect(id).to.equal('id');
+            expect(id).to.equal('container-id');
             expect(configuration).to.equal('configuration');
             return 'Stubbed Action Panel';
         });
-        sandbox.stub(PanelContainerFactory, 'createPanel').callsFake(function (id, title) {
-            expect(id).to.equal('id');
-            expect(title).to.equal('title');
-            return 'Stubbed Action Panel Container';
+
+        var addContentToContainer = sandbox.stub(PanelContainerUtilities, 'addContentToContainer');
+        addContentToContainer.onCall(0).callsFake(function (container, panel) {
+            expect(container).to.equal('Stubbed Container');
+            expect(panel).to.equal('Stubbed Loading Panel');
         });
-        sandbox.stub(PanelContainerUtilities, 'addContentToContainer').callsFake(function (container, panel) {
-            expect(container).to.equal('Stubbed Action Panel Container');
+        addContentToContainer.onCall(1).callsFake(function (container, panel) {
+            expect(container).to.equal('Stubbed Container');
             expect(panel).to.equal('Stubbed Action Panel');
+            done();
         });
-        expect(ActionPanel.createActionPanelContainer('id', 'title', 'configuration')).to.equal('Stubbed Action Panel Container');
+
+        sandbox.stub(PanelContainerUtilities, 'removeContentFromContainer').callsFake(function (container) {
+            expect(container).to.equal('Stubbed Container');
+        });
+
+        var configurationCallback = function (successCallback, failureCallback) {
+            successCallback('configuration');
+        };
+
+        expect(ActionPanelAPI.createActionPanelContainer('container-id', 'title', configurationCallback)).to.equal('Stubbed Container');
+    });
+
+    it('should show error when fails to create action panel container', function (done) {
+        sandbox.stub(LoadingPanelFactory, 'createLoadingPanel').callsFake(function (id) {
+            expect(id).to.equal('container-id-loading-panel');
+            return 'Stubbed Loading Panel';
+        });
+
+        sandbox.stub(PanelContainerFactory, 'createPanel').callsFake(function (id, title) {
+            expect(id).to.equal('container-id');
+            expect(title).to.equal('title');
+            return 'Stubbed Container';
+        });
+
+        sandbox.stub(PanelContainerUtilities, 'addContentToContainer').callsFake(function (container, panel) {
+            expect(container).to.equal('Stubbed Container');
+            expect(panel).to.equal('Stubbed Loading Panel');
+        });
+
+        sandbox.stub(AlertAPI, 'createDangerAlert').callsFake(function (id, text, timeoutInSeconds) {
+            expect(id).to.equal('container-id-loading-failed-alert');
+            expect(text).to.equal('Alert Text');
+            expect(timeoutInSeconds).to.equal(60);
+            return 'Stubbed Alert';
+        });
+
+        sandbox.stub(PanelContainerUtilities, 'addAlertToTopPanel').callsFake(function (container, alertPanel) {
+            expect(container).to.equal('Stubbed Container');
+            expect(alertPanel).to.equal('Stubbed Alert');
+            done();
+        });
+
+        var configurationCallback = function (successCallback, failureCallback) {
+            failureCallback('Alert Text');
+        };
+
+        expect(ActionPanelAPI.createActionPanelContainer('container-id', 'title', configurationCallback)).to.equal('Stubbed Container');
     });
 
     it('should destroy action panel container', function (done) {
@@ -125,7 +186,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.destroyActionPanelContainer('Action Panel Container');
+        ActionPanelAPI.destroyActionPanelContainer('Action Panel Container');
     });
 
     it('should recreate action panel', function (done) {
@@ -145,7 +206,7 @@ describe('Action Panel API', function () {
             expect(panel).to.equal('Stubbed New Action Panel');
             done();
         });
-        ActionPanel.recreateActionPanel(stubbedContainer, 'new configuration');
+        ActionPanelAPI.recreateActionPanel(stubbedContainer, 'new configuration');
     });
 
     it('should remove action panel from container', function (done) {
@@ -153,7 +214,7 @@ describe('Action Panel API', function () {
             expect(container).to.equal('Action Panel Container');
             done();
         });
-        ActionPanel.removeActionPanel('Action Panel Container');
+        ActionPanelAPI.removeActionPanel('Action Panel Container');
     });
 
     it('should validate panel configuration', function () {
@@ -161,7 +222,7 @@ describe('Action Panel API', function () {
             expect(panelConfiguration).to.equal('Stubbed Panel Configuration');
             return 'Stubbed Verification Result';
         });
-        expect(ActionPanel.validateActionPanelConfiguration('Stubbed Panel Configuration')).to.equal('Stubbed Verification Result');
+        expect(ActionPanelAPI.validateActionPanelConfiguration('Stubbed Panel Configuration')).to.equal('Stubbed Verification Result');
     });
 
     it('should retrieve data from action panel', function () {
@@ -169,6 +230,6 @@ describe('Action Panel API', function () {
             expect(container).to.equal('container');
             return 'Stubbed Data';
         });
-        expect(ActionPanel.retrieveActionPanelData('container')).to.equal('Stubbed Data');
+        expect(ActionPanelAPI.retrieveActionPanelData('container')).to.equal('Stubbed Data');
     });
 });

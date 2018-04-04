@@ -20,7 +20,7 @@ function createPanelHeading(panelId, panelTitle) {
     return ElementFactory.createElementWithIdClassNameAndTextNode('div', panelId + '-heading', 'panel-heading', panelTitle);
 }
 
-function createPanel(panelId, panelTitle) {
+function createContainer(panelId, panelTitle) {
     var panel = ElementFactory.createElementWithIdAndClassName('div', panelId, 'panel panel-default');
     panel.appendChild(createPanelHeading(panelId, panelTitle));
     panel.appendChild(createPanelBody(panelId));
@@ -28,5 +28,5 @@ function createPanel(panelId, panelTitle) {
 }
 
 module.exports = {
-    createPanel: createPanel
+    createContainer: createContainer
 };

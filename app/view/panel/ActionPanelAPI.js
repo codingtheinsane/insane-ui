@@ -46,11 +46,11 @@ function clearButtonsFromTopPanel(container) {
 
 function createActionPanelContainer(panelId, panelTitle, panelConfigurationCallback) {
     var loadingPanel = LoadingPanelFactory.createLoadingPanel(panelId + '-loading-panel');
-    var container = PanelContainerFactory.createPanel(panelId, panelTitle);
+    var container = PanelContainerFactory.createContainer(panelId, panelTitle);
     PanelContainerUtilities.addContentToContainer(container, loadingPanel);
     panelConfigurationCallback(function (panelConfiguration) {
         var actionPanel = ActionPanelFactory.createActionPanel(panelId, panelConfiguration);
-        PanelContainerUtilities.removeContentFromContainer(container);
+        PanelContainerUtilities.clearContentFromContainer(container);
         PanelContainerUtilities.addContentToContainer(container, actionPanel);
     }, function (errorAlertText) {
         var errorAlert = AlertAPI.createDangerAlert(panelId + '-loading-failed-alert', errorAlertText, 60);
@@ -65,12 +65,12 @@ function destroyActionPanelContainer(container) {
 
 function recreateActionPanel(container, newPanelConfiguration) {
     var actionPanel = ActionPanelFactory.createActionPanel(container.id, newPanelConfiguration);
-    PanelContainerUtilities.removeContentFromContainer(container);
+    PanelContainerUtilities.clearContentFromContainer(container);
     PanelContainerUtilities.addContentToContainer(container, actionPanel);
 }
 
 function removeActionPanel(container) {
-    PanelContainerUtilities.removeContentFromContainer(container);
+    PanelContainerUtilities.clearContentFromContainer(container);
 }
 
 function validateActionPanelConfiguration(panelConfiguration) {

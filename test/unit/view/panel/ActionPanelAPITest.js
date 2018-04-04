@@ -110,7 +110,7 @@ describe('Action Panel API', function () {
             return 'Stubbed Loading Panel';
         });
 
-        sandbox.stub(PanelContainerFactory, 'createPanel').callsFake(function (id, title) {
+        sandbox.stub(PanelContainerFactory, 'createContainer').callsFake(function (id, title) {
             expect(id).to.equal('container-id');
             expect(title).to.equal('title');
             return 'Stubbed Container';
@@ -133,7 +133,7 @@ describe('Action Panel API', function () {
             done();
         });
 
-        sandbox.stub(PanelContainerUtilities, 'removeContentFromContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
             expect(container).to.equal('Stubbed Container');
         });
 
@@ -150,7 +150,7 @@ describe('Action Panel API', function () {
             return 'Stubbed Loading Panel';
         });
 
-        sandbox.stub(PanelContainerFactory, 'createPanel').callsFake(function (id, title) {
+        sandbox.stub(PanelContainerFactory, 'createContainer').callsFake(function (id, title) {
             expect(id).to.equal('container-id');
             expect(title).to.equal('title');
             return 'Stubbed Container';
@@ -198,7 +198,7 @@ describe('Action Panel API', function () {
             expect(configuration).to.equal('new configuration');
             return 'Stubbed New Action Panel';
         });
-        sandbox.stub(PanelContainerUtilities, 'removeContentFromContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
             expect(container).to.equal(stubbedContainer);
         });
         sandbox.stub(PanelContainerUtilities, 'addContentToContainer').callsFake(function (container, panel) {
@@ -210,7 +210,7 @@ describe('Action Panel API', function () {
     });
 
     it('should remove action panel from container', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'removeContentFromContainer').callsFake(function (container) {
+        sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
             expect(container).to.equal('Action Panel Container');
             done();
         });

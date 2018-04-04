@@ -44,16 +44,15 @@ function clearButtonsFromTopPanel(container) {
     PanelContainerUtilities.clearButtonsFromTopPanel(container);
 }
 
-function createActionPanelContainer(panelId, panelTitle, panelConfigurationCallback) {
-    var loadingPanel = LoadingPanelFactory.createLoadingPanel(panelId + '-loading-panel');
-    var container = PanelContainerFactory.createContainer(panelId, panelTitle);
-    PanelContainerUtilities.addContentToContainer(container, loadingPanel);
+function createActionPanelContainer(containerId, containerTitle, panelConfigurationCallback) {
+    var container = PanelContainerFactory.createContainer(containerId, containerTitle);
+    PanelContainerUtilities.addContentToContainer(container, LoadingPanelFactory.createLoadingPanel(containerId + '-loading-panel'));
     panelConfigurationCallback(function (panelConfiguration) {
-        var actionPanel = ActionPanelFactory.createActionPanel(panelId, panelConfiguration);
+        var actionPanel = ActionPanelFactory.createActionPanel(containerId + '-action-panel', panelConfiguration);
         PanelContainerUtilities.clearContentFromContainer(container);
         PanelContainerUtilities.addContentToContainer(container, actionPanel);
     }, function (errorAlertText) {
-        var errorAlert = AlertAPI.createDangerAlert(panelId + '-loading-failed-alert', errorAlertText, 60);
+        var errorAlert = AlertAPI.createDangerAlert(containerId + '-loading-failed-alert', errorAlertText, 60);
         PanelContainerUtilities.addAlertToTopPanel(container, errorAlert);
     });
     return container;
@@ -63,14 +62,17 @@ function destroyActionPanelContainer(container) {
     ElementDestructor.destructElement(container);
 }
 
-function recreateActionPanel(container, newPanelConfiguration) {
-    var actionPanel = ActionPanelFactory.createActionPanel(container.id, newPanelConfiguration);
+function recreateActionPanel(container, panelConfigurationCallback) {
     PanelContainerUtilities.clearContentFromContainer(container);
-    PanelContainerUtilities.addContentToContainer(container, actionPanel);
-}
-
-function removeActionPanel(container) {
-    PanelContainerUtilities.clearContentFromContainer(container);
+    PanelContainerUtilities.addContentToContainer(container, LoadingPanelFactory.createLoadingPanel(container.id + '-loading-panel'));
+    panelConfigurationCallback(function (panelConfiguration) {
+        var actionPanel = ActionPanelFactory.createActionPanel(container.id + '-action-panel', panelConfiguration);
+        PanelContainerUtilities.clearContentFromContainer(container);
+        PanelContainerUtilities.addContentToContainer(container, actionPanel);
+    }, function (errorAlertText) {
+        var errorAlert = AlertAPI.createDangerAlert(container.id + '-loading-failed-alert', errorAlertText, 60);
+        PanelContainerUtilities.addAlertToTopPanel(container, errorAlert);
+    });
 }
 
 function validateActionPanelConfiguration(panelConfiguration) {
@@ -94,7 +96,6 @@ module.exports = {
     createActionPanelContainer: createActionPanelContainer,
     destroyActionPanelContainer: destroyActionPanelContainer,
     recreateActionPanel: recreateActionPanel,
-    removeActionPanel: removeActionPanel,
     retrieveActionPanelData: retrieveActionPanelData,
     validateActionPanelConfiguration: validateActionPanelConfiguration
 };

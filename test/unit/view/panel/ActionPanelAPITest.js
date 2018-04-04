@@ -117,7 +117,7 @@ describe('Action Panel API', function () {
         });
 
         sandbox.stub(ActionPanelFactory, 'createActionPanel').callsFake(function (id, configuration) {
-            expect(id).to.equal('container-id');
+            expect(id).to.equal('container-id-action-panel');
             expect(configuration).to.equal('configuration');
             return 'Stubbed Action Panel';
         });
@@ -191,30 +191,79 @@ describe('Action Panel API', function () {
 
     it('should recreate action panel', function (done) {
         var stubbedContainer = {
-            'id': 'container id'
+            'id': 'container-id'
         };
-        sandbox.stub(ActionPanelFactory, 'createActionPanel').callsFake(function (id, configuration) {
-            expect(id).to.equal('container id');
-            expect(configuration).to.equal('new configuration');
-            return 'Stubbed New Action Panel';
+
+        sandbox.stub(LoadingPanelFactory, 'createLoadingPanel').callsFake(function (id) {
+            expect(id).to.equal('container-id-loading-panel');
+            return 'Stubbed Loading Panel';
         });
+
+        sandbox.stub(ActionPanelFactory, 'createActionPanel').callsFake(function (id, configuration) {
+            expect(id).to.equal('container-id-action-panel');
+            expect(configuration).to.equal('configuration');
+            return 'Stubbed Action Panel';
+        });
+
+        var addContentToContainer = sandbox.stub(PanelContainerUtilities, 'addContentToContainer');
+        addContentToContainer.onCall(0).callsFake(function (container, panel) {
+            expect(container).to.equal(stubbedContainer);
+            expect(panel).to.equal('Stubbed Loading Panel');
+        });
+        addContentToContainer.onCall(1).callsFake(function (container, panel) {
+            expect(container).to.equal(stubbedContainer);
+            expect(panel).to.equal('Stubbed Action Panel');
+            done();
+        });
+
         sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
             expect(container).to.equal(stubbedContainer);
         });
-        sandbox.stub(PanelContainerUtilities, 'addContentToContainer').callsFake(function (container, panel) {
-            expect(container).to.equal(stubbedContainer);
-            expect(panel).to.equal('Stubbed New Action Panel');
-            done();
-        });
-        ActionPanelAPI.recreateActionPanel(stubbedContainer, 'new configuration');
+
+        var configurationCallback = function (successCallback, failureCallback) {
+            successCallback('configuration');
+        };
+
+        ActionPanelAPI.recreateActionPanel(stubbedContainer, configurationCallback);
     });
 
-    it('should remove action panel from container', function (done) {
-        sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
-            expect(container).to.equal('Action Panel Container');
+    it('should show error when fails to recreate action panel', function (done) {
+        var stubbedContainer = {
+            'id': 'container-id'
+        };
+
+        sandbox.stub(LoadingPanelFactory, 'createLoadingPanel').callsFake(function (id) {
+            expect(id).to.equal('container-id-loading-panel');
+            return 'Stubbed Loading Panel';
+        });
+
+        sandbox.stub(PanelContainerUtilities, 'addContentToContainer').callsFake(function (container, panel) {
+            expect(container).to.equal(stubbedContainer);
+            expect(panel).to.equal('Stubbed Loading Panel');
+        });
+
+        sandbox.stub(AlertAPI, 'createDangerAlert').callsFake(function (id, text, timeoutInSeconds) {
+            expect(id).to.equal('container-id-loading-failed-alert');
+            expect(text).to.equal('Alert Text');
+            expect(timeoutInSeconds).to.equal(60);
+            return 'Stubbed Alert';
+        });
+
+        sandbox.stub(PanelContainerUtilities, 'addAlertToTopPanel').callsFake(function (container, alertPanel) {
+            expect(container).to.equal(stubbedContainer);
+            expect(alertPanel).to.equal('Stubbed Alert');
             done();
         });
-        ActionPanelAPI.removeActionPanel('Action Panel Container');
+
+        sandbox.stub(PanelContainerUtilities, 'clearContentFromContainer').callsFake(function (container) {
+            expect(container).to.equal(stubbedContainer);
+        });
+
+        var configurationCallback = function (successCallback, failureCallback) {
+            failureCallback('Alert Text');
+        };
+
+        ActionPanelAPI.recreateActionPanel(stubbedContainer, configurationCallback);
     });
 
     it('should validate panel configuration', function () {
